@@ -1,12 +1,13 @@
 import React from 'react';
-import './friend.scss'
+import './news.scss';
 
-const friend = (props) => {
+
+const news = () => {
     return (
         <div className='container'>
-            <h1>Friend</h1>
+            <h1>News</h1>
         </div>
     )
 }
 
-export default friend;
+export default news;

@@ -1,18 +1,16 @@
 import React from 'react';
-import style from './header.module.css';
-import Friends from '../friend/friend'
+import './header.scss';
+
+import Navbar from '../navbar/navbar'
 
 const header = (props) => {
     return (
-        <div className={style.container}>
-            <header className={style.header}>
-                <div className={style.logo}>
+        <div className='containerHeader'>
+            <header className='header'>
+                <div className='logo'>
                     <h1>socialTrain</h1>
-                    <Friends />
                 </div>
-                <div className={style.fastLink}>
-
-                </div>
+                <Navbar />
             </header>
         </div>
     )
