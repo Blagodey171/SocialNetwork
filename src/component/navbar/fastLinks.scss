@@ -1,0 +1,19 @@
+    $navbarFont : 'Ubuntu', sans-serif;
+    $navbarLinksSize : 20px;
+    $navbarLinkLetterSpacing : 1px;
+
+.containerFastLinks {
+    width: 100vw;
+    max-width: 1700px;
+    margin: 0 auto;
+    height: 35px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    background-color: #463A3E;
+
+    opacity: .8;
+    transition: .1s;
+}
