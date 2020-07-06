@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.scss';
 
-import Navbar from '../navbar/navbar'
+import Navbar from '../navbar/fastLinks'
 
 const header = (props) => {
     return (
@@ -10,7 +10,6 @@ const header = (props) => {
                 <div className='logo'>
                     <h1>socialTrain</h1>
                 </div>
-                <Navbar />
             </header>
         </div>
     )

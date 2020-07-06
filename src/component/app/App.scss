@@ -3,18 +3,31 @@
     background-color: rgb(231, 231, 253);
     margin: 0 auto;
 
-   
     
+    
+    .containerWithTwoColumn {
+        display: flex;
+        flex-direction: row;
 
-    .contentApp {
+        margin: 0 auto;
         width: 100vw;
         max-width: 1900px;
-        margin: 0 auto;
-        height: 2000px;
+
+        .rightColumn {
+            max-width: 1700px;
+            .contentApp {
+                width: 100%;
+                max-width: 1900px;
+                margin: 0 auto;
+                height: 2000px;
+                
         
-
-        background-color: rgb(255, 255, 255);
-        border-radius: 10px;
-
+                background-color: rgb(255, 255, 255);
+                border-radius: 10px;
+        
+            }
+        }
     }
+
+    
 }

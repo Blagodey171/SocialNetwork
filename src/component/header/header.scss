@@ -1,22 +1,18 @@
     $nameNetworkFont : 'Bangers', cursive;
     $nameNetworkSize : 50px;
     $nameNetworkLetterSpacing : 4px;
+    $nameNetworkColor : rgb(246, 247, 239);
 
 .containerHeader {
-    width: 100vw;
-    max-width: 1900px;
+    
+    max-width: 1700px;
     margin: 0 auto;
 
-    h1 {
-        font-family: $nameNetworkFont;
-        letter-spacing: $nameNetworkLetterSpacing;
-        font-size: $nameNetworkSize;
-    }
-    .logo {
-        padding-top: 20px;
-    }
+    
+    
     .header {
-        max-width: 100vw;
+        width: 100vw;
+        max-width: 1700px;
         height: 130px;
         margin: 0 auto;
 
@@ -25,7 +21,21 @@
         justify-content: space-between;
         align-items: center;   
         
-        background-color: rgb(252, 220, 177);
+        background-color: #2A1F23;
+
+        .logo {
+            padding-top: 20px;
+            margin: 0 auto;
+    
+            h1 {
+                font-family: $nameNetworkFont;
+                letter-spacing: $nameNetworkLetterSpacing;
+                font-size: $nameNetworkSize;
+                color: $nameNetworkColor;
+                text-align: center;
+                
+            }
+        }
     }
 
 }
