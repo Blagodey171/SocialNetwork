@@ -5,10 +5,16 @@ import App from './component/app/App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
 
+import State from './state/state';
+
+
+
+
+
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <App  dialogs={State.dialogs} link={State.link}/>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

@@ -3,7 +3,7 @@ import './App.scss';
 import { Route } from 'react-router-dom';
 
 import Header from '../header/header';
-import FastLinks from '../navbar/fastLinks';
+import FastLinks from '../fastLinks/fastLinks';
 import Friend from '../friend/friend';
 import News from '../news/news';
 import Profile from '../profile/profile';
@@ -15,23 +15,21 @@ import Sidebar from '../sidebar/sidebar';
 function App(props) {
     return (
         <div className='containerApp'>
-            <div className='containerWithTwoColumn'>
-                <Sidebar />
-                <div className='rightColumn'>
-                    <Header />
-                    <FastLinks />
-                    <div className='contentApp'>
-                        <Route path='/friend' component={Friend} />
-                        <Route path='/messages' component={Messages} />
-                        <Route path='/news' component={News} />
-                        <Route path='/profile' component={Profile} />
-                        <Route path='/settings' component={Settings} />
-                        <Route path='/music' component={Music} />
+            <Header />
+                <div className='containerWithTwoColumn'>
+                    <Sidebar  link={props.link}/>
+                    <div className='containerContent'>
+                        <FastLinks />
+                        <div className='contentApp'>
+                            <Route path='/friend' render= {() => <Friend/>} />
+                            <Route path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
+                            <Route path='/news' render= {() => <News/>} />
+                            <Route path='/profile' render= {() => <Profile/> }/>
+                            <Route path='/settings' render= {() => <Settings  />} />
+                            <Route path='/music' render= {() => <Music/>} />
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            
         </div>
     );
 }
