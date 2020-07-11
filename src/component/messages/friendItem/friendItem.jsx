@@ -1,15 +1,15 @@
 import React from 'react';
-import './friendItem';
+import './frienditem.scss';
 
 const friendItem = (props) =>  {
     return (
-        <div className='containerFriendItem' >
-            <div className='avatar' >
-                <img src={props.avatarImg} />
-                <h3 className='name' >{props.name} </h3>
+        <div className='container-friend-item' >
+            <div className='container-avatar-friend' >
+                <img className='avatar-friend' src={props.avatarImg} alt='I am' />
+                <h3 className='name-friend' >{props.name} </h3>
             </div>
 
-            <h6 className='info' >{props.id} </h6>
+            <h6 className='info-friend' >{props.id} </h6>
         </div>
     )
 }

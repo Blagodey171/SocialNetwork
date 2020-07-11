@@ -14,13 +14,13 @@ import Sidebar from '../sidebar/sidebar';
 
 function App(props) {
     return (
-        <div className='containerApp'>
+        <div className='container-app'>
             <Header />
-                <div className='containerWithTwoColumn'>
+                <div className='container-two-column'>
                     <Sidebar  link={props.link}/>
-                    <div className='containerContent'>
+                    <div className='container-content'>
                         <FastLinks />
-                        <div className='contentApp'>
+                        <div className='content-app'>
                             <Route path='/friend' render= {() => <Friend/>} />
                             <Route path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
                             <Route path='/news' render= {() => <News/>} />

@@ -1,11 +1,11 @@
 
-.containerApp {
+.container-app {
     background-color: rgb(231, 231, 253);
     margin: 0 auto;
 
     
     
-    .containerWithTwoColumn {
+    .container-two-column {
         display: flex;
         flex-direction: row;
 
@@ -13,16 +13,18 @@
         width: 100vw;
         max-width: 1400px;
 
-        .containerContent {
-            max-width: 1400px;
-            .contentApp {
-                width: 100%;
-                max-width: 1400px;
+        .container-content {
+            max-width: 1200px;
+            .content-app {
+                // width: 100%;
+                max-width: 1200px;
                 margin: 0 auto;
-                height: 2000px;
+                min-height: 1500px;
                 
         
-                background-color: rgb(255, 255, 255);
+                background-color: rgb(231, 231, 253);
+
+                border: 3px rgb(255, 255, 255) solid;
         
             }
         }

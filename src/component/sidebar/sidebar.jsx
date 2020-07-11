@@ -10,7 +10,7 @@ const sidebar = (props) => {
     const fullLink = props.link.map(link => <ContainerLink to={link.path} activeClassName='click' text={link.name} />);
 
     return (
-        <div className='containerSidebar'>
+        <div className='container-sidebar'>
             {fullLink}
         </div>
     )

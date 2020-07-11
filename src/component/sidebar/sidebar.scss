@@ -6,7 +6,7 @@ $sidebarLinkColor: #453A3E;
 $sidebarLinkColorClick: #D1B995;
 $sidebarLinkColorHover: rgb(54, 45, 48);
 
-.containerSidebar {
+.container-sidebar {
 width: 100vw;
 max-width: 200px;
 margin: 0 auto;
@@ -22,7 +22,7 @@ align-items: center;
 opacity: .8;
 transition: .1s;
 
-    .containerLink {
+    .container-link {
         background-color: none;
         width: 170px;
         height: 25px;
@@ -33,7 +33,7 @@ transition: .1s;
 
         border-radius: 3px;
     }
-    .containerLink:hover {
+    .container-link:hover {
         background-color: $sidebarLinkColorHover;
         
         cursor: pointer;
@@ -65,6 +65,3 @@ transition: .1s;
     }
 }
 
-.containerNavbar:hover {
-opacity: 1;
-}
