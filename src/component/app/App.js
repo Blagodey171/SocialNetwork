@@ -24,7 +24,7 @@ function App(props) {
                             <Route path='/friend' render= {() => <Friend/>} />
                             <Route path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
                             <Route path='/news' render= {() => <News/>} />
-                            <Route path='/profile' render= {() => <Profile/> }/>
+                            <Route path='/profile' render= {() => <Profile posts={props.posts} addPost={props.addPost}/> }/>
                             <Route path='/settings' render= {() => <Settings  />} />
                             <Route path='/music' render= {() => <Music/>} />
                         </div>

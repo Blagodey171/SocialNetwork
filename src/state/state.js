@@ -13,6 +13,20 @@ let state = {
         {path: '/music', name: 'Музыка'},
         {path: '/settings', name: 'Настройки'},
     ],
+    posts: [
+        {author: 'Danil', text: 'Hi, this is JS', likesCount: 1},
+        {author: 'Jasmine', text: 'Hi, this is ReactJS', likesCount: 2},
+        {author: 'Vika', text: 'Hi, this is Redux', likesCount: 4},
+    ]
 }
 
+export function addPost (message) {
+    let newPost = {
+        author: 'Name',
+        text: message,
+        likesCount: 0,
+    }
+
+    state.posts.push(newPost);
+}
 export default state;

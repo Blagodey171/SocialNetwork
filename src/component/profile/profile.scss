@@ -68,8 +68,35 @@
         .profile__wall__posts {
             width: 660px;
             
-
             background-color: #000;
+
+            .profile__wall__posts__create {
+                
+                .new_post {
+                    width: 300px;
+                    height: 50px;
+                    
+                    resize: none;
+                    outline: none;
+                }
+
+                .add_post {
+
+                }
+            }
+
+            .profile__wall__posts__display {
+                width: 100%;
+                min-height: 500px;
+
+                background-color: #fff;
+
+                .post {
+                    border: 1px black solid;
+
+                    margin: 15px;
+                }
+            }
         }
     }
 }
