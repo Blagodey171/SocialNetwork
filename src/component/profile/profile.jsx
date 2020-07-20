@@ -19,10 +19,10 @@ const profile = (props) => {
 
     return (
         <div className='profile'>
-            <div className='profile__info' >
-                <div className='profile__info__avatar' >
-                    <img className='profile__info__avatar__img' src="https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg" alt=""/>
-                    <div className='profile__info__avatar__settings-img' >
+            <div className='profile-info' >
+                <div className='profile-info__avatar' >
+                    <img className='profile-info__img' src="https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg" alt=""/>
+                    <div className='profile-info__settings-img' >
 
                     </div>
                 </div>
@@ -30,16 +30,16 @@ const profile = (props) => {
 
                 </div>
             </div>
-            <div className='profile__wall' >
-                <div className='profile__wall__profile-content' >
+            <div className='profile-wall' >
+                <div className='profile-wall__profile-content' >
 
                 </div>
-                <div className='profile__wall__posts' >
-                    <div className='profile__wall__posts__create' >
-                        <textarea ref={ref} name="new_post" className='new_post' ></textarea>
-                        <button onClick={post} className='add_post' >add post</button>
+                <div className='profile-wall__posts' >
+                    <div className='profile-wall__create-post' >
+                        <textarea ref={ref} name="new-post" className='new-post' ></textarea>
+                        <button onClick={post} className='add-post' >add post</button>
                     </div>
-                    <div className='profile__wall__posts__display' >
+                    <div className='profile-wall__display-post' >
                         {postsArray}
                     </div>
                 </div>

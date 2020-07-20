@@ -1,3 +1,4 @@
+import {rerender} from '../rerender';
 let state = {
     dialogs: [
         {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg'},
@@ -28,5 +29,6 @@ export function addPost (message) {
     }
 
     state.posts.push(newPost);
+    rerender(state);
 }
 export default state;

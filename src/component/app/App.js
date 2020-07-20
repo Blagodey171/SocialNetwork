@@ -18,9 +18,9 @@ function App(props) {
             <Header />
                 <div className='container-two-column'>
                     <Sidebar  link={props.link}/>
-                    <div className='container-content'>
+                    <div className='content'>
                         <FastLinks />
-                        <div className='content-app'>
+                        <div className='content-main'>
                             <Route path='/friend' render= {() => <Friend/>} />
                             <Route path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
                             <Route path='/news' render= {() => <News/>} />
