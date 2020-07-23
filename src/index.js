@@ -1,6 +1,7 @@
 import {rerender} from './rerender';
 import * as serviceWorker from './serviceWorker';
 import State from './state/state';
+import './index.scss';
 
 rerender(State);
 

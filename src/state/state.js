@@ -1,5 +1,22 @@
 import {rerender} from '../rerender';
+
 let state = {
+    function: {
+        addPost (message) {
+            let newPost = {
+                author: 'Name',
+                text: message,
+                likesCount: 0,
+            }
+            
+            state.posts.push(newPost);
+            rerender(state);
+        },
+        changeTextareaValue (value) {
+            state.textareaState = value;
+            rerender(state);
+        },
+    },
     dialogs: [
         {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg'},
         {id: 2, name: 'Vika', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg'},
@@ -18,17 +35,10 @@ let state = {
         {author: 'Danil', text: 'Hi, this is JS', likesCount: 1},
         {author: 'Jasmine', text: 'Hi, this is ReactJS', likesCount: 2},
         {author: 'Vika', text: 'Hi, this is Redux', likesCount: 4},
-    ]
+    ],
+    textareaState: '',
+
 }
 
-export function addPost (message) {
-    let newPost = {
-        author: 'Name',
-        text: message,
-        likesCount: 0,
-    }
 
-    state.posts.push(newPost);
-    rerender(state);
-}
 export default state;

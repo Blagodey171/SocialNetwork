@@ -7,12 +7,16 @@ const profile = (props) => {
     let postsArray = props.posts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)
     
 
-    let ref = React.createRef();
+    let textareaValue = React.createRef();
 
     function post () {
-        
-        let value = ref.current.value;
-        props.addPost(value)
+        let value = textareaValue.current.value;
+        props.addPost(value);
+    }
+
+    function changeTextareaValue () {
+        let text = textareaValue.current.value;
+        props.changeTextareaValue(text);
     }
 
     
@@ -36,7 +40,7 @@ const profile = (props) => {
                 </div>
                 <div className='profile-wall__posts' >
                     <div className='profile-wall__create-post' >
-                        <textarea ref={ref} name="new-post" className='new-post' ></textarea>
+                        <textarea onChange={changeTextareaValue} ref={textareaValue} name="new-post" className='new-post' value={props.textareaState} ></textarea>
                         <button onClick={post} className='add-post' >add post</button>
                     </div>
                     <div className='profile-wall__display-post' >
