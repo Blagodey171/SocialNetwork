@@ -10,8 +10,9 @@ const profile = (props) => {
     let textareaValue = React.createRef();
 
     function post () {
-        let value = textareaValue.current.value;
-        props.addPost(value);
+        
+        // let value = textareaValue.current.value;
+        props.addPost();
     }
 
     function changeTextareaValue () {
@@ -26,13 +27,9 @@ const profile = (props) => {
             <div className='profile-info' >
                 <div className='profile-info__avatar' >
                     <img className='profile-info__img' src="https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg" alt=""/>
-                    <div className='profile-info__settings-img' >
-
-                    </div>
+                    <div className='profile-info__settings-img' ></div>
                 </div>
-                <div className='profile__info__person-data' >
-
-                </div>
+                <div className='profile-info__person-data' ></div>
             </div>
             <div className='profile-wall' >
                 <div className='profile-wall__profile-content' >

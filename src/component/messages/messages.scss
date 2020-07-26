@@ -1,11 +1,16 @@
 .container-dialogs {
     padding: 10px;
 
-    .container-for-friends {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .container-dialogs__dialogs {
 
     }
 
-    .container-messages {
+    .container-dialogs__viewMessage {
         
     }
 }
