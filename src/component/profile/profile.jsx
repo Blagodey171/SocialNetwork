@@ -15,7 +15,8 @@ const profile = (props) => {
         props.addPost();
     }
 
-    function changeTextareaValue () {
+    function changeTextarea () {
+        debugger
         let text = textareaValue.current.value;
         props.changeTextareaValue(text);
     }
@@ -37,7 +38,7 @@ const profile = (props) => {
                 </div>
                 <div className='profile-wall__posts' >
                     <div className='profile-wall__create-post' >
-                        <textarea onChange={changeTextareaValue} ref={textareaValue} name="new-post" className='new-post' value={props.textareaState} ></textarea>
+                        <textarea onChange={changeTextarea} ref={textareaValue} name="new-post" className='new-post' value={props.textareaState} ></textarea>
                         <button onClick={post} className='add-post' >add post</button>
                     </div>
                     <div className='profile-wall__display-post' >

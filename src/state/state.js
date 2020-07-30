@@ -1,21 +1,24 @@
-import {rerender} from '../rerender';
 
-let state = {
-    function: {
-        addPost () {
-            let newPost = {
-                author: 'Name',
-                text: state.textareaState,
-                likesCount: 0,
-            }
-            
-            state.posts.push(newPost);
-            rerender(state);
-        },
-        changeTextareaValue (value) {
-            state.textareaState = value;
-            rerender(state);
-        },
+let store = {
+    addPost ()  {
+        let newPost = {
+            author: 'Name',
+            text: store.textareaState,
+            likesCount: 0,
+        }
+        store.posts.push(newPost);
+        store.rerender(store);
+    },
+    changeTextareaValue (value)  {
+        
+        store.textareaState = value;
+        store.rerender(store);
+    },
+    subscriber (observer) {
+        store.rerender = observer;
+    },
+    rerender () {
+        console.log('hello')
     },
     dialogs: [
         {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: '', link: '/messages/Danil' },
@@ -37,8 +40,9 @@ let state = {
         {author: 'Vika', text: 'Hi, this is Redux', likesCount: 4},
     ],
     textareaState: '',
-
+    
 }
 
 
-export default state;
+
+export default store;

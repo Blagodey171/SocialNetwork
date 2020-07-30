@@ -1,11 +1,27 @@
-import {rerender} from './rerender';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './component/app/App.js';
+import {BrowserRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-import State from './state/state';
+
+import store from './state/state';
 import './index.scss';
 
-rerender(State);
+function renderApp (store) {
+    
+    ReactDOM.render(
+        
+        <BrowserRouter>
+          <React.StrictMode>
+            <App  dialogs={store.dialogs} link={store.link} posts={store.posts} addPost={store.addPost} textareaState={store.textareaState} changeTextareaValue={store.changeTextareaValue} />
+          </React.StrictMode>
+        </BrowserRouter>,
+        document.getElementById('root')
+      );
+}
 
-
+store.subscriber(renderApp);
+renderApp(store);
 
 
 

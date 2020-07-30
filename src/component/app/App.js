@@ -21,12 +21,12 @@ function App(props) {
                     <div className='content'>
                         <FastLinks />
                         <div className='content-main'>
-                            <Route path='/friend' render= {() => <Friend/>} />
-                            <Route path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
-                            <Route path='/news' render= {() => <News/>} />
-                            <Route path='/profile' render= {() => <Profile posts={props.posts} addPost={props.addPost} textareaState={props.textareaState} changeTextareaValue={props.changeTextareaValue} /> }/>
-                            <Route path='/settings' render= {() => <Settings  />} />
-                            <Route path='/music' render= {() => <Music/>} />
+                            <Route exact path='/friend' render= {() => <Friend/>} />
+                            <Route exact path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
+                            <Route exact path='/news' render= {() => <News/>} />
+                            <Route exact path='/profile'  render= {() => <Profile posts={props.posts} addPost={props.addPost} textareaState={props.textareaState} changeTextareaValue={props.changeTextareaValue} /> }/>
+                            <Route exact path='/settings' render= {() => <Settings  />} />
+                            <Route exact path='/music' render= {() => <Music/>} />
                         </div>
                     </div>
                 </div>
