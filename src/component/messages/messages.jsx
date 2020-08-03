@@ -9,7 +9,7 @@ let dialogs = props.dialogs.map(friend => <FriendItem to={friend.link} avatarImg
 
     return (
         <div className='container-dialogs'>
-            {/* <Route exact path={props.dialogs.link} render={() => <Danil/>} /> */}
+            {/* <Route exact path={props.dialogs.link} render={() => <Chat />} /> */}
             {dialogs}
             
         </div>

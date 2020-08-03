@@ -1,6 +1,10 @@
 import React from 'react';
 import './profile.scss';
-import Post from './post'
+import Post from './post';
+
+import {addPostObject} from '../../state/state';
+import {changeTextareaValueObject} from '../../state/state';
+
 
 
 const profile = (props) => {
@@ -11,14 +15,15 @@ const profile = (props) => {
 
     function post () {
         
-        // let value = textareaValue.current.value;
-        props.addPost();
+        props.dispatch(addPostObject())
+        
     }
 
     function changeTextarea () {
-        debugger
+        
         let text = textareaValue.current.value;
-        props.changeTextareaValue(text);
+        props.dispatch(changeTextareaValueObject(text))
+        
     }
 
     
