@@ -2,8 +2,8 @@ import React from 'react';
 import './profile.scss';
 import Post from './post';
 
-import {addPostObject} from '../../state/state';
-import {changeTextareaValueObject} from '../../state/state';
+import {addPostObject} from '../../redux/profileReducer';
+import {changeTextareaValueObject} from '../../redux/profileReducer';
 
 
 

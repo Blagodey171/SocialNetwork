@@ -4,7 +4,7 @@ import App from './component/app/App.js';
 import {BrowserRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
-import Store from './state/state';
+import Store from './redux/store';
 import './index.scss';
 
 let renderApp = (state) => {
@@ -13,7 +13,7 @@ let renderApp = (state) => {
         
         <BrowserRouter>
           <React.StrictMode>
-            <App  dispatch={Store.dispatch} dialogs={state.dialogs} link={state.link} posts={state.posts} addPost={Store.addPost.bind(Store)} textareaState={state.textareaState} changeTextareaValue={Store.changeTextareaValue.bind(Store)} />
+            <App  dispatch={Store.dispatch.bind(Store)} dialogs={state.dialogsPage.dialogs} link={state.sidebar.link} posts={state.profilePage.posts} textareaState={state.profilePage.textareaState} />
           </React.StrictMode>
         </BrowserRouter>,
         document.getElementById('root')
