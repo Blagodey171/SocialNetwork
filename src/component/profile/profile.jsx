@@ -7,16 +7,14 @@ import {changeTextareaValueObject} from '../../redux/profileReducer';
 
 
 
-const profile = (props) => {
+let profile = (props) => {
     let postsArray = props.posts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)
     
 
     let textareaValue = React.createRef();
 
     function post () {
-        
         props.dispatch(addPostObject())
-        
     }
 
     function changeTextarea () {

@@ -8,12 +8,10 @@ import Store from './redux/store';
 import './index.scss';
 
 let renderApp = (state) => {
-  
     ReactDOM.render(
-        
         <BrowserRouter>
           <React.StrictMode>
-            <App  dispatch={Store.dispatch.bind(Store)} dialogs={state.dialogsPage.dialogs} link={state.sidebar.link} posts={state.profilePage.posts} textareaState={state.profilePage.textareaState} />
+            <App  dispatch={Store.dispatch.bind(Store)} dialogs={state.dialogsPage.dialogsBlock} link={state.sidebar.link} posts={state.profilePage.posts} textareaState={state.profilePage.textareaState} />
           </React.StrictMode>
         </BrowserRouter>,
         document.getElementById('root')

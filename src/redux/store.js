@@ -1,11 +1,13 @@
 import profileReducer from '../redux/profileReducer';
+import dialogsReducer from '../redux/dialogsReducer';
 
 let store = {
 
     dispatch (action) {
         
         this._state.profilePage = profileReducer(this._state.profilePage, action);
-
+        this._state.dialogsPage.dialogsBlock = dialogsReducer(this._state.dialogsPage.dialogsBlock, action);
+        
         this._rerender(this._state);
     },
     
@@ -18,14 +20,16 @@ let store = {
     getState () {
         return this._state;
     },
+
     _state: {
         dialogsPage: {
-            dialogs: [
-                {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: '', link: '/messages/Danil' },
-                {id: 2, name: 'Vika', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: '', link: '/messages/Vika'},
-                {id: 3, name: 'Jasmine', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: '', link: '/messages/Jasmine'},
-                {id: 4, name: 'Zhenya', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: '', link: '/messages/Zhenya'},
+            dialogsBlock: [
+                {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: ['hr','asdg','sdgrww'], link: '/messages/Danil' },
+                {id: 2, name: 'Vika', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Vika'},
+                {id: 3, name: 'Jasmine', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Jasmine'},
+                {id: 4, name: 'Zhenya', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Zhenya'},
             ],
+            messages: {},
         },
         profilePage: {
             posts: [
@@ -45,14 +49,9 @@ let store = {
                 {path: '/settings', name: 'Настройки'},
             ],
         },
+
     },
-    _chat1: {
-        messages: [
-            {text: 'hi',flag: 'user',}
-        ]
-
-
-    }
+    
     
     
 }

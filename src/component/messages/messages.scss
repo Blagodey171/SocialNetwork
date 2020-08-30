@@ -1,16 +1,23 @@
-.container-dialogs {
-    padding: 10px;
-
+.container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .container-dialogs__dialogs {
-
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    
+    .container-dialogs {
+        width: 450px;
+        min-height: 1000px;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        
     }
 
-    .container-dialogs__viewMessage {
-        
+    .container-messages {
+        width: 700px;
+        height: 1000px;
     }
 }

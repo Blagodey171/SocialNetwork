@@ -22,7 +22,7 @@ function App(props) {
                         <FastLinks />
                         <div className='content-main'>
                             <Route exact path='/friend' render= {() => <Friend/>} />
-                            <Route exact path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
+                            <Route  path='/messages' render= {() => <Messages dialogs={props.dialogs} />} />
                             <Route exact path='/news' render= {() => <News/>} />
                             <Route exact path='/profile'  render= {() => <Profile dispatch={props.dispatch} posts={props.posts} addPost={props.addPost} textareaState={props.textareaState} changeTextareaValue={props.changeTextareaValue} /> }/>
                             <Route exact path='/settings' render= {() => <Settings  />} />
