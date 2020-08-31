@@ -24,12 +24,12 @@ let store = {
     _state: {
         dialogsPage: {
             dialogsBlock: [
-                {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: ['hr','asdg','sdgrww'], link: '/messages/Danil' },
-                {id: 2, name: 'Vika', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Vika'},
-                {id: 3, name: 'Jasmine', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Jasmine'},
-                {id: 4, name: 'Zhenya', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Zhenya'},
+                {id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Danil', chatTextareaValue: '' },
+                {id: 2, name: 'Vika', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Vika', chatTextareaValue: ''},
+                {id: 3, name: 'Jasmine', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Jasmine', chatTextareaValue: ''},
+                {id: 4, name: 'Zhenya', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', text: [], link: '/messages/Zhenya', chatTextareaValue: ''},
             ],
-            messages: {},
+            
         },
         profilePage: {
             posts: [
@@ -37,7 +37,7 @@ let store = {
                 {author: 'Jasmine', text: 'Hi, this is ReactJS', likesCount: 2},
                 {author: 'Vika', text: 'Hi, this is Redux', likesCount: 4},
             ],
-            textareaState: '',
+            postTextareaValue: '',
         },
         sidebar: {
             link: [

@@ -6,23 +6,26 @@ let chat = (props) => {
     let messages = props.messages.map(message => <li>{message}</li>)
 
     let textareaValue = React.createRef();
+
     let changeTextarea = () => {
         let text = textareaValue.current.value;
-        props.dispatch(changeTextareaValue(text))
+        let name = textareaValue.current.name;
+        props.dispatch(changeTextareaValue(text, name))
     }
 
     let addMessage = () => {
-        props.dispatch(addPost());
+        let name = textareaValue.current.name;
+        props.dispatch(addPost(name));
     }
 
     return (
         <div className='windowChat'>
             <div className='containerMessages'>
-                <ul className='messages' >
+                
                     {messages}
-                </ul>
+                
             </div>
-            <textarea onChange={changeTextarea} ref={textareaValue} className='newMessage'></textarea>
+            <textarea name={props.name} value={props.chatTextareaValue} onChange={changeTextarea} ref={textareaValue} className='newMessage'></textarea>
             <button onClick={addMessage} className='buttonPostNewMessage'>send</button>
         </div>
     )

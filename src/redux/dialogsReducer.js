@@ -12,30 +12,46 @@ let initialStore = {
         ],
     },
 }
-// переработать dialogsBlock, чтобы добавлять сообщения
+
 let dialogsReducer = (state = initialStore, action) => {
     switch(action.type) {
         case CHANGE_TEXTAREA_DIALOGS:
-            // state.dialogsPage.dialogsBlock
+            state.find((el) => {
+                if (el.name === action.name) {
+                    el.chatTextareaValue = action.text;
+                    return true;
+                }
+                return false;
+            })
             return state;
         case ADD_MESSAGE:
-
+            state.find((el) => {
+                if (el.name === action.name) {
+                    el.text.push(el.chatTextareaValue)
+                    return true;
+                }
+                return false;
+            })
+            return state;
+        default: 
             return state;
 
     }
-    return state;
+    
 }
 
-export const addPost = () => {
+export const addPost = (name) => {
     return {
         type: ADD_MESSAGE,
+        name: name,
     }
 };
 
-export const changeTextareaValue = (value) => {
+export const changeTextareaValue = (value, name) => {
     return {
         type: CHANGE_TEXTAREA_DIALOGS,
         text: value,
+        name: name,
     }
 };
 export default dialogsReducer;
