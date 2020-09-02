@@ -118,7 +118,8 @@
                     border: 1px black solid;
                     
                     margin-top: 10px;
-                    
+                    overflow: auto;
+                    word-break: break-word;
                 }
                 .post:first-child {
                     margin: 0;

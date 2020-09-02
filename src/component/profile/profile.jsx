@@ -18,10 +18,8 @@ let profile = (props) => {
     }
 
     function changeTextarea () {
-        
         let text = textareaValue.current.value;
         props.dispatch(changeTextareaValueObject(text))
-        
     }
 
     

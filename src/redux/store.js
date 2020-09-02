@@ -11,7 +11,7 @@ let store = {
         this._rerender(this._state);
     },
     
-    subscriber (observer) {
+    subscribe (observer) {
         this._rerender = observer;
     },
     _rerender () {

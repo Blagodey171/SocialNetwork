@@ -21,12 +21,10 @@ let chat = (props) => {
     return (
         <div className='windowChat'>
             <div className='containerMessages'>
-                
-                    {messages}
-                
+                {messages}
             </div>
-            <textarea name={props.name} value={props.chatTextareaValue} onChange={changeTextarea} ref={textareaValue} className='newMessage'></textarea>
-            <button onClick={addMessage} className='buttonPostNewMessage'>send</button>
+            <textarea name={props.name} value={props.chatTextareaValue} onChange={changeTextarea} ref={textareaValue} className='newMessage' placeholder='Введите сообщение...'></textarea>
+            <button onClick={addMessage} className='postNewMessage'>send</button>
         </div>
     )
 }

@@ -4,14 +4,14 @@ import App from './component/app/App.js';
 import {BrowserRouter} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
-import Store from './redux/store';
+import Store from './redux/redux-store';
 import './index.scss';
 
 let renderApp = (state) => {
     ReactDOM.render(
         <BrowserRouter>
           <React.StrictMode>
-            <App  dispatch={Store.dispatch.bind(Store)} dialogs={state.dialogsPage.dialogsBlock} link={state.sidebar.link} posts={state.profilePage.posts} postTextareaValue={state.profilePage.postTextareaValue}  />
+            <App  dispatch={Store.dispatch.bind(Store)} dialogs={state.dialogsReducer.dialogsPage.dialogsBlock} link={state.sidebarReducer.sidebar.link} posts={state.profileReducer.profilePage.posts} postTextareaValue={state.profileReducer.profilePage.postTextareaValue}  />
           </React.StrictMode>
         </BrowserRouter>,
         document.getElementById('root')
@@ -19,7 +19,10 @@ let renderApp = (state) => {
 }
 
 renderApp(Store.getState());
-Store.subscriber(renderApp);
+Store.subscribe(() => {
+  let state = Store.getState();
+  renderApp(state);
+});
 
 
     
