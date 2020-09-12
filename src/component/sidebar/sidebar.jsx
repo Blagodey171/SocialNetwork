@@ -7,11 +7,11 @@ import ContainerLink from './containerLink/containerLink';
 
 
 const sidebar = (props) => {
-    const fullLink = props.link.map(link => <ContainerLink to={link.path} activeClassName='click' text={link.name} />);
+    const allLink = props.link.map(link => <ContainerLink to={link.path} activeClassName='click' text={link.name} />);
 
     return (
         <div className='container-sidebar'>
-            {fullLink}
+            {allLink}
         </div>
     )
 }

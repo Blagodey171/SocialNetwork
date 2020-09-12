@@ -6,10 +6,10 @@ import Header from '../header/header';
 import FastLinks from '../fastLinks/fastLinks';
 import Friend from '../friend/friend';
 import News from '../news/news';
-import Profile from '../profile/profile';
+import ContainerProfile from '../profile/containerProfile';
 import Settings from '../settings/settings';
 import Music from '../music/music';
-import Messages from '../messages/messages';
+import ContainerMessages from '../messages/containerMessages';
 import Sidebar from '../sidebar/sidebar';
 
 function App(props) {
@@ -22,9 +22,9 @@ function App(props) {
                         <FastLinks />
                         <div className='content-main'>
                             <Route exact path='/friend' render= {() => <Friend/>} />
-                            <Route  path='/messages' render= {() => <Messages dialogs={props.dialogs} dispatch={props.dispatch} />} />
+                            <Route  path='/messages' render= {() => <ContainerMessages dialogs={props.dialogs} dispatch={props.dispatch} />}/>
                             <Route exact path='/news' render= {() => <News/>} />
-                            <Route exact path='/profile'  render= {() => <Profile dispatch={props.dispatch} posts={props.posts} addPost={props.addPost} postTextareaValue={props.postTextareaValue} changeTextareaValue={props.changeTextareaValue} /> }/>
+                            <Route exact path='/profile'  render= {() => <ContainerProfile dispatch={props.dispatch} posts={props.posts} addPost={props.addPost} postTextareaValue={props.postTextareaValue} changeTextareaValue={props.changeTextareaValue} /> }/>
                             <Route exact path='/settings' render= {() => <Settings  />} />
                             <Route exact path='/music' render= {() => <Music/>} />
                         </div>

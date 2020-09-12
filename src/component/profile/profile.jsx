@@ -1,26 +1,18 @@
 import React from 'react';
 import './profile.scss';
-import Post from './post';
-
-import {addPostObject} from '../../redux/profileReducer';
-import {changeTextareaValueObject} from '../../redux/profileReducer';
-
-
 
 let profile = (props) => {
-    let postsArray = props.posts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)
-    
-
+    let posts = props.postsArray;
     let textareaValue = React.createRef();
 
-    function post () {
-        props.dispatch(addPostObject())
-    }
+    function addPostAction () {
+        props.addPostAction()
+    };
 
     function changeTextarea () {
         let text = textareaValue.current.value;
-        props.dispatch(changeTextareaValueObject(text))
-    }
+        props.changeTextareaValueAction(text)
+    };
 
     
 
@@ -40,10 +32,10 @@ let profile = (props) => {
                 <div className='profile-wall__posts' >
                     <div className='profile-wall__create-post' >
                         <textarea onChange={changeTextarea} ref={textareaValue} name="new-post" className='new-post' value={props.postTextareaValue} ></textarea>
-                        <button onClick={post} className='add-post' >add post</button>
+                        <button onClick={addPostAction} className='add-post' >add post</button>
                     </div>
                     <div className='profile-wall__display-post' >
-                        {postsArray}
+                        {posts}
                     </div>
                 </div>
             </div>

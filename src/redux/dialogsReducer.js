@@ -17,21 +17,19 @@ let initialStore = {
 let dialogsReducer = (state = initialStore, action) => {
     switch(action.type) {
         case CHANGE_TEXTAREA_DIALOGS:
-            state.find((el) => {
+            state.dialogsPage.dialogsBlock.find((el) => {
                 if (el.name === action.name) {
                     el.chatTextareaValue = action.text;
-                    return true;
+                    
                 }
-                return false;
+                
             })
             return state;
         case ADD_MESSAGE:
-            state.find((el) => {
+            state.dialogsPage.dialogsBlock.find((el) => {
                 if (el.name === action.name) {
                     el.text.push(el.chatTextareaValue)
-                    return true;
                 }
-                return false;
             })
             return state;
         default: 
