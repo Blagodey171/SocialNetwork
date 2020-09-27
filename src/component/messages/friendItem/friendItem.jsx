@@ -15,7 +15,6 @@ let friendItem = (props) =>  {
                 </div>
             </div>
         </NavLink>
-        
     )
 }
 

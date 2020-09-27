@@ -1,26 +1,27 @@
-import React from 'react';
-import './profile.scss';
-import Post from './post';
-
 import {addPostAction} from '../../redux/profileReducer';
 import {changeTextareaValueAction} from '../../redux/profileReducer';
+import { connect } from 'react-redux';
 import Profile from './profile';
 
-
-
-let containerProfile = (props) => {
-    let postsArray = props.posts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)
-    
-    function addPost () {
-        props.dispatch(addPostAction())
+    const mapStateToProps = (state) => {
+        return {
+            valueTextarea: state.profileReducer.postTextareaValue,
+            posts: state.profileReducer.posts,
+        }
     }
-
-    function changeTextarea (text) {
-        props.dispatch(changeTextareaValueAction(text))
-    }
-
-    return <Profile postsArray={postsArray} changeTextareaValueAction={changeTextarea} addPostAction={addPost} />
     
-}
+    const mapDispacthToProps = (dispatch) => {
+        return {
+            addPostAction: () => {
+                dispatch(addPostAction())
+            },
+            changeTextareaValueAction: (text) => {
+                dispatch(changeTextareaValueAction(text))
+            },
+        }
+    }
+    
+    let containerProfile = connect(mapStateToProps, mapDispacthToProps)(Profile);
+
 
 export default containerProfile;
