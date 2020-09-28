@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 import Header from '../header/header';
 import FastLinks from '../fastLinks/fastLinks';
-import Friend from '../friend/friend';
+import ContainerFriends from '../friend/containerFriends.jsx';
 import News from '../news/news';
 import ContainerProfile from '../profile/containerProfile';
 import Settings from '../settings/settings';
@@ -21,7 +21,7 @@ function App(props) {
                     <div className='content'>
                         <FastLinks />
                         <div className='content-main'>
-                            <Route exact path='/friend' render= {() => <Friend/>} />
+                            <Route exact path='/friend' render= {() => <ContainerFriends/>} />
                             <Route  path='/messages' render= {() => <ContainerMessages/>}/>
                             <Route exact path='/news' render= {() => <News/>} />
                             <Route exact path='/profile'  render= {() => <ContainerProfile/> }/>
