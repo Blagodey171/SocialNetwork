@@ -4,30 +4,30 @@ const SET_USERS = 'SET-USERS';
 let initialState = {
 
     users: [
-        {
-            id: 1,
-            follow: true,
-            name: 'Zhenya',
-            avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
-            status: 'hey, i am learn JS',
-            navigation: { country: 'Russia', city: 'Novosibirsk' }
-        },
-        {
-            id: 2,
-            follow: false,
-            name: 'Jasmin',
-            avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
-            status: 'hey, i am learn Python',
-            navigation: { country: 'Russia', city: 'Novosibirsk' }
-        },
-        {
-            id: 3,
-            follow: true,
-            name: 'Vika',
-            avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
-            status: 'hey!',
-            navigation: { country: 'Russia', city: 'Novosibirsk' }
-        },
+        // {
+        //     id: 1,
+        //     follow: true,
+        //     name: 'Zhenya',
+        //     avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
+        //     status: 'hey, i am learn JS',
+        //     navigation: { country: 'Russia', city: 'Novosibirsk' }
+        // },
+        // {
+        //     id: 2,
+        //     follow: false,
+        //     name: 'Jasmin',
+        //     avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
+        //     status: 'hey, i am learn Python',
+        //     navigation: { country: 'Russia', city: 'Novosibirsk' }
+        // },
+        // {
+        //     id: 3,
+        //     follow: true,
+        //     name: 'Vika',
+        //     avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
+        //     status: 'hey!',
+        //     navigation: { country: 'Russia', city: 'Novosibirsk' }
+        // },
     ]
 };
 
@@ -44,10 +44,12 @@ let friendsReducer = (state = initialState, action) => {
                 })
             }
         
-        case SET_USERS: 
+        case SET_USERS:
+            
+            debugger 
             return {
                 ...state,
-                users: [...state.users, action.users]
+                users: [...state.users].concat(action.users)
             }
         default:
             return state;    
