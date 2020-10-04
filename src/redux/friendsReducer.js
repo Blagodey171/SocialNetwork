@@ -1,34 +1,14 @@
 const SUBSCRIBE = 'SUBSCRIBE';
 const SET_USERS = 'SET-USERS';
-
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 let initialState = {
 
-    users: [
-        // {
-        //     id: 1,
-        //     follow: true,
-        //     name: 'Zhenya',
-        //     avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
-        //     status: 'hey, i am learn JS',
-        //     navigation: { country: 'Russia', city: 'Novosibirsk' }
-        // },
-        // {
-        //     id: 2,
-        //     follow: false,
-        //     name: 'Jasmin',
-        //     avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
-        //     status: 'hey, i am learn Python',
-        //     navigation: { country: 'Russia', city: 'Novosibirsk' }
-        // },
-        // {
-        //     id: 3,
-        //     follow: true,
-        //     name: 'Vika',
-        //     avatar: 'https://funpick.ru/wp-content/cache/thumb/fc0a2f150_320x200.jpg',
-        //     status: 'hey!',
-        //     navigation: { country: 'Russia', city: 'Novosibirsk' }
-        // },
-    ]
+    users: [],
+    totalUsersCount: 0,
+    sizePage: 10,
+    currentPage: 4,
+
 };
 
 let friendsReducer = (state = initialState, action) => {
@@ -45,12 +25,20 @@ let friendsReducer = (state = initialState, action) => {
             }
         
         case SET_USERS:
-            
-            debugger 
             return {
                 ...state,
-                users: [...state.users].concat(action.users)
+                users: action.users
             }
+        case SET_TOTAL_USERS_COUNT: 
+            return {
+                ...state,
+                totalUsersCount: action.count
+            }    
+        case SET_CURRENT_PAGE: 
+            return {
+                ...state,
+                currentPage: action.numberPage
+            }    
         default:
             return state;    
     }
@@ -69,5 +57,16 @@ export const setUsersAC = (users) => {
         users,
     }
 }
-
+export const setTotalUsersCountAC = (totalUsersCount) => {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        count: totalUsersCount,
+    }
+}
+export const setCurrentPageAC = (numberPage) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        numberPage,
+    }
+}
 export default friendsReducer;
