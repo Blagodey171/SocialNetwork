@@ -1,15 +1,14 @@
 import React from 'react';
 import './chat.scss';
 
-
 let chat = (props) => {
     let textareaValue = React.createRef();
 
     let changeTextarea = () => {
         let value = textareaValue.current.value;
         let name = textareaValue.current.name;
-
         props.changeTextareaValue(value, name)
+
     }
 
     let addMessage = () => {

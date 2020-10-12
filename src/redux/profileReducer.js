@@ -38,13 +38,13 @@ let profileReducer = (state = initialStore, action) => {
     
 }
 
-export const addPostAction = () => {
+export const addPostAC = () => {
     return {
         type: ADD_POST_TYPE,
     }
 };
 
-export const changeTextareaValueAction = (value) => {
+export const changeTextareaValueAC = (value) => {
     return {
         type: CHANGE_TEXTAREA_VALUE,
         text: value,

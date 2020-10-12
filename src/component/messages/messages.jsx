@@ -1,39 +1,40 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './messages.scss';
+import Chat from './chat/chat';
+import Frienditem from './frienditem/frienditem.jsx';
 
-let messages = (props) => {
-    let message = props.messages.map(message => <li><span>{message}</span></li>)
-
-    let textareaValue = React.createRef();
-
-    let changeTextarea = () => {
-        let value = textareaValue.current.value;
-        props.changeTextareaValue(value)
+class Messages extends React.Component {
+    
+    constructor (props) {
+        super(props);
+        this.props = props;
     }
 
-    let addMessage = () => {
-        props.addPost();
+    setLinks() {
+        let linkToChat = this.props.usersDialogs.map(friend => <Frienditem to={friend.link} avatarImg={friend.img} name={friend.name} id={friend.id} />);
+        return linkToChat;
     }
 
+    setRouts() {
+        let routs = this.props.usersDialogs.map(friend => <Route path={`/messages/${friend.name}`} render={() => <Chat chatTextareaValue={friend.chatTextareaValue} changeTextareaValue={this.props.changeTextareaValue} addPost={this.props.addPost} name={friend.name} messages={friend.text} />} />);
+        return routs;
+    }
 
-    return (
-        <div className='container'>
-            <div className='container-dialogs'>
-                {props.linkToChat}
-            </div>
-            <div className='container-messages'>
-                <div className='chat-container'>
-                    <div className='chat-container__dialog'>
-                        {message}
-                    </div>
+    render() {
+        return (
+            // протестировать- containerMessages возвращает class component messages => messages возвращает разметку с routs and links
+            <div className='container'>
+                <div className='container-dialogs'>
+                    {this.setLinks()}
                 </div>
-                <textarea value={props.textareaValue} onChange={changeTextarea} ref={textareaValue} className='textarea' placeholder='Введите сообщение...' ></textarea>
-                <button onClick={addMessage} className='postBtn'>send</button>
+                {this.setRouts()}
+    
             </div>
-
-        </div>
-
-    )
+    
+        )
+    }
+    
 }
 
-export default messages;
+export default Messages;

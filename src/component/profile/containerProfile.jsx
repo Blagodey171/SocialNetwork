@@ -1,5 +1,5 @@
-import {addPostAction} from '../../redux/profileReducer';
-import {changeTextareaValueAction} from '../../redux/profileReducer';
+import {addPostAC} from '../../redux/profileReducer';
+import {changeTextareaValueAC} from '../../redux/profileReducer';
 import { connect } from 'react-redux';
 import Profile from './profile';
 
@@ -10,18 +10,10 @@ import Profile from './profile';
         }
     }
     
-    const mapDispacthToProps = (dispatch) => {
-        return {
-            addPostAction: () => {
-                dispatch(addPostAction())
-            },
-            changeTextareaValueAction: (text) => {
-                dispatch(changeTextareaValueAction(text))
-            },
-        }
-    }
-    
-    let containerProfile = connect(mapStateToProps, mapDispacthToProps)(Profile);
+    let containerProfile = connect(mapStateToProps, {
+        addPostAC,
+        changeTextareaValueAC,
+    })(Profile);
 
 
 export default containerProfile;

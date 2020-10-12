@@ -2,13 +2,16 @@ const SUBSCRIBE = 'SUBSCRIBE';
 const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_ISFETCHING = 'SET-ISFETCHING';
+
 let initialState = {
 
     users: [],
     totalUsersCount: 0,
     sizePage: 10,
-    currentPage: 4,
-
+    currentPage: 1,
+    isFetching: false,
+    awaitAxiosSpan: 'load',
 };
 
 let friendsReducer = (state = initialState, action) => {
@@ -38,6 +41,11 @@ let friendsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.numberPage
+            }    
+        case SET_ISFETCHING: 
+            return {
+                ...state,
+                isFetching: !state.isFetching
             }    
         default:
             return state;    
@@ -69,4 +77,10 @@ export const setCurrentPageAC = (numberPage) => {
         numberPage,
     }
 }
+export const setValueIsFetching = () => {
+    return {
+        type: SET_ISFETCHING,
+    }
+}
+
 export default friendsReducer;

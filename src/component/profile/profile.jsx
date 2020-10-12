@@ -8,12 +8,12 @@ let profile = (props) => {
     let textareaValue = React.createRef();
 
     function addPostAction () {
-        props.addPostAction()
+        props.addPostAC()
     };
 
     function changeTextarea () {
         let text = textareaValue.current.value;
-        props.changeTextareaValueAction(text)
+        props.changeTextareaValueAC(text)
     };
 
     
