@@ -8,10 +8,9 @@ let initialState = {
 
     users: [],
     totalUsersCount: 0,
-    sizePage: 10,
+    sizePage: 100,
     currentPage: 1,
-    isFetching: false,
-    awaitAxiosSpan: 'load',
+    isFetching: true,
 };
 
 let friendsReducer = (state = initialState, action) => {
@@ -77,7 +76,7 @@ export const setCurrentPageAC = (numberPage) => {
         numberPage,
     }
 }
-export const setValueIsFetching = () => {
+export const setValueIsFetchingAC = () => {
     return {
         type: SET_ISFETCHING,
     }

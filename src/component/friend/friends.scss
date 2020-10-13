@@ -1,11 +1,20 @@
 .container {
     padding: 10px;
-
+    .loadGif {
+        width: 150px;
+        height: 150px;
+    }
     .container-pages {
-        overflow-x: scroll;
+        overflow-y: scroll;
+        background-color: rgb(194, 194, 194);
 
-        width: 300px;
-        height: 100px;
+        width: 150px;
+        height: 500px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         .pageNumber {
             margin: 5px;
@@ -18,12 +27,15 @@
 
     .container-user-card {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        width: 500px;
-        height: 200px;
-        overflow-x: scroll;
+        width: 300px;
+        height: 700px;
+        overflow-y: scroll;
+
+        background-color: rgb(194, 194, 194);
 
         .user-card {
             margin: 20px;

@@ -1,13 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as axios from 'axios';
-import Friends from './friends'
-import {subscribeAC, setUsersAC, setTotalUsersCountAC, setCurrentPageAC} from '../../redux/friendsReducer';
+import Friends from './friends';
+import LoadGif from '../../img/loading/126.svg';
+import {subscribeAC, setUsersAC, setTotalUsersCountAC, setCurrentPageAC, setValueIsFetchingAC} from '../../redux/friendsReducer';
 
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0)
+            this.props.setValueIsFetchingAC()
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.sizePage}`).then(res => {
+            this.props.setValueIsFetchingAC()    
             this.props.setUsersAC(res.data.items);
             this.props.setTotalUsersCountAC(res.data.totalCount);
         })
@@ -16,8 +19,9 @@ class FriendsClassComponent extends React.Component {
 
     setPage = (page) => {
         this.props.setCurrentPageAC(page)
-
+        this.props.setValueIsFetchingAC()
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.sizePage}`).then(res => {
+            this.props.setValueIsFetchingAC()
             this.props.setUsersAC(res.data.items)
         })
     }
@@ -32,8 +36,14 @@ class FriendsClassComponent extends React.Component {
         return arrPages.map(el => <span onClick={() => {this.setPage(el)}} className={`pageNumber ${this.props.currentPage === el && 'selected'}`} >{el}</span>);
     }
 
+    isFetching = () => {
+        if (!this.props.isFetching) {
+            return <img className='loadGif' src={LoadGif} alt="load"/>
+        } return 
+    }
+
     render() {
-        return <Friends pages={this.pages()} setPage={this.setPage} currentPage={this.props.currentPage} subscribe={this.props.subscribeAC} setUsers={this.props.setUsersAC} users={this.props.users} isFetching={this.props.isFetching} awaitAxiosSpan={this.props.awaitAxiosSpan} />
+        return <Friends pages={this.pages()} setPage={this.setPage} currentPage={this.props.currentPage} subscribe={this.props.subscribeAC} setUsers={this.props.setUsersAC} users={this.props.users} isFetching={this.isFetching} />
     }
 }
 
@@ -46,7 +56,6 @@ let mapStateToProps = (state) => {
         sizePage: state.friendsReducer.sizePage,
         currentPage: state.friendsReducer.currentPage,
         isFetching: state.friendsReducer.isFetching,
-        awaitAxiosSpan: state.friendsReducer.awaitAxiosSpan,
     }
 }
 
@@ -56,5 +65,6 @@ export default connect(mapStateToProps, {
     setUsersAC,
     setTotalUsersCountAC,
     setCurrentPageAC,
+    setValueIsFetchingAC,
 
 })(FriendsClassComponent)

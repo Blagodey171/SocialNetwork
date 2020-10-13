@@ -2,17 +2,17 @@ import React from 'react';
 import './chat.scss';
 
 let chat = (props) => {
-    let textareaValue = React.createRef();
+    let textareaValueDialogs = React.createRef();
 
-    let changeTextarea = () => {
-        let value = textareaValue.current.value;
-        let name = textareaValue.current.name;
-        props.changeTextareaValue(value, name)
+    let changeTextareaDialogs = () => {
+        let value = textareaValueDialogs.current.value;
+        let name = textareaValueDialogs.current.name;
+        props.changeDialogsTextareaValue(value, name)
 
     }
 
     let addMessage = () => {
-        let name = textareaValue.current.name;
+        let name = textareaValueDialogs.current.name;
         props.addPost(name);
     }
 
@@ -23,7 +23,7 @@ let chat = (props) => {
                     {props.messages}
                 </div>
             </div>
-            <textarea name={props.name} value={props.chatTextareaValue} onChange={changeTextarea} ref={textareaValue} className='textarea' placeholder='Введите сообщение...' ></textarea>
+            <textarea name={props.name} value={props.chatTextareaValue} onChange={changeTextareaDialogs} ref={textareaValueDialogs} className='textarea' placeholder='Введите сообщение...' ></textarea>
             <button onClick={addMessage} className='postBtn'>send</button>
         </div>
 

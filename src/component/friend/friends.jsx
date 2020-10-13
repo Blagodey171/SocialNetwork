@@ -1,15 +1,19 @@
 import React from 'react';
 import './friends.scss'
 
+
 let friends = (props) => {
     
 
     return (
         <div className='container'>
+                {
+                    props.isFetching()
+                }
                 <div className='container-pages' >
                     {props.pages}
                 </div>
-
+                
                 <div className='container-user-card' >
                 {
                     props.users.map(user =>

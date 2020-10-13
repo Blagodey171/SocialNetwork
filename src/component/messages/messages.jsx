@@ -17,13 +17,12 @@ class Messages extends React.Component {
     }
 
     setRouts() {
-        let routs = this.props.usersDialogs.map(friend => <Route path={`/messages/${friend.name}`} render={() => <Chat chatTextareaValue={friend.chatTextareaValue} changeTextareaValue={this.props.changeTextareaValue} addPost={this.props.addPost} name={friend.name} messages={friend.text} />} />);
+        let routs = this.props.usersDialogs.map(friend => <Route path={`/messages/${friend.name}`} render={() => <Chat chatTextareaValue={friend.chatTextareaValue} changeDialogsTextareaValue={this.props.changeDialogsTextareaValue} addPost={this.props.addPost} name={friend.name} messages={friend.text} />} />);
         return routs;
     }
 
     render() {
         return (
-            // протестировать- containerMessages возвращает class component messages => messages возвращает разметку с routs and links
             <div className='container'>
                 <div className='container-dialogs'>
                     {this.setLinks()}

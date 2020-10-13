@@ -1,11 +1,11 @@
 
-const CHANGE_TEXTAREA_VALUE = 'CHANGE-TEXTAREA-VALUE';
+const CHANGE_DIALOGS_TEXTAREA_VALUE = 'CHANGE-DIALOGS-TEXTAREA-VALUE';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 
 let initialStore = {
 
     dialogsBlock: [
-        { id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', link: '/messages/Danil', chatTextareaValue: '', text: ['jgkfgm', 'adfwrg', 'dfss'] },
+        { id: 1, name: 'Danil', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', link: '/messages/Danil', chatTextareaValue: '', text: ['hello'] },
         { id: 2, name: 'Vika', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', link: '/messages/Vika', chatTextareaValue: '', text: [] },
         { id: 3, name: 'Jasmine', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', link: '/messages/Jasmine', chatTextareaValue: '', text: [] },
         { id: 4, name: 'Zhenya', img: 'https://sun9-61.userapi.com/c837722/u398342099/video/y_1a57f360.jpg', link: '/messages/Zhenya', chatTextareaValue: '', text: [] },
@@ -15,7 +15,7 @@ let initialStore = {
 
 let dialogsReducer = (state = initialStore, action) => {
     switch (action.type) {
-        case CHANGE_TEXTAREA_VALUE:
+        case CHANGE_DIALOGS_TEXTAREA_VALUE:
             state.dialogsBlock.find(friend => {
                 if(friend.name === action.name) {
                     friend.chatTextareaValue = action.text
@@ -32,10 +32,10 @@ let dialogsReducer = (state = initialStore, action) => {
             state.dialogsBlock.find(friend => {
                 if(friend.name === action.name) {
                     friend.text = [...friend.text, friend.chatTextareaValue]
+                    friend.chatTextareaValue = '';
                 }
             })
             return {
-                ...state,
                 dialogsBlock: [...state.dialogsBlock]
             }
         default:
@@ -54,9 +54,9 @@ export const addPost = (name) => {
     }
 };
 
-export const changeTextareaValue = (value, name) => {
+export const changeDialogsTextareaValue = (value, name) => {
     return {
-        type: CHANGE_TEXTAREA_VALUE,
+        type: CHANGE_DIALOGS_TEXTAREA_VALUE,
         text: value,
         name,
     }

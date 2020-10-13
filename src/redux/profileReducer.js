@@ -1,5 +1,5 @@
 const ADD_POST_TYPE = 'ADD-POST';
-const CHANGE_TEXTAREA_VALUE = 'CHANGE-TEXTAREA-VALUE';
+const CHANGE_PROFILE_TEXTAREA_VALUE = 'CHANGE-PROFILE-TEXTAREA-VALUE';
 
 let initialStore = {
     posts: [
@@ -26,7 +26,7 @@ let profileReducer = (state = initialStore, action) => {
             };
         }    
 
-        case CHANGE_TEXTAREA_VALUE: {
+        case CHANGE_PROFILE_TEXTAREA_VALUE: {
             return {
                 ...state,
                 postTextareaValue: action.text
@@ -46,7 +46,7 @@ export const addPostAC = () => {
 
 export const changeTextareaValueAC = (value) => {
     return {
-        type: CHANGE_TEXTAREA_VALUE,
+        type: CHANGE_PROFILE_TEXTAREA_VALUE,
         text: value,
     }
 };
