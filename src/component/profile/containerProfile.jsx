@@ -1,19 +1,20 @@
-import {addPostAC} from '../../redux/profileReducer';
-import {changeTextareaValueAC} from '../../redux/profileReducer';
+import {addPostAC, changeTextareaValueAC, setProfileAC} from '../../redux/profileReducer';
 import { connect } from 'react-redux';
-import Profile from './profile';
+import Profile from './classComponentProfile';
 
     const mapStateToProps = (state) => {
         return {
             valueTextarea: state.profileReducer.postTextareaValue,
             posts: state.profileReducer.posts,
+            profile: state.profileReducer.profile,
         }
     }
     
-    let containerProfile = connect(mapStateToProps, {
-        addPostAC,
-        changeTextareaValueAC,
-    })(Profile);
+let containerProfile = connect(mapStateToProps, {
+    addPostAC,
+    changeTextareaValueAC,
+    setProfileAC
+})(Profile);
 
 
 export default containerProfile;

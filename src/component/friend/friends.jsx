@@ -1,28 +1,30 @@
 import React from 'react';
 import './friends.scss'
+import { NavLink } from 'react-router-dom';
 
 
 let friends = (props) => {
-    
+
 
     return (
         <div className='container'>
-                {
-                    props.isFetching()
-                }
-                <div className='container-pages' >
-                    {props.pages}
-                </div>
-                
-                <div className='container-user-card' >
+            {
+                props.isFetching()
+            }
+            <div className='container-pages' >
+                {props.pages}
+            </div>
+            <div className='container-user-card' >
                 {
                     props.users.map(user =>
                         <div className='user-card' >
                             <div className='user-card__avatar'>
-                                <img src={user.photos.small} alt="" />
+                                <NavLink to={`profile/${user.id}`}>
+                                    <img src={user.photos.small} alt="" />
+                                </NavLink>
                                 {
                                     user.follow ? <button onClick={() => { props.subscribe(user.id) }} className='user-card__follow'>UNFOLLOW</button> :
-                                    <button onClick={() => { props.subscribe(user.id) }} className='user-card__follow'>FOLLOW</button>
+                                        <button onClick={() => { props.subscribe(user.id) }} className='user-card__follow'>FOLLOW</button>
                                 }
                             </div>
                             <div className='user-card__info' >
@@ -37,10 +39,10 @@ let friends = (props) => {
                         </div>
                     )
                 }
-                </div>
-        </div>        
+            </div>
+        </div>
     )
-   
+
 }
 
 export default friends;

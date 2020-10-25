@@ -27,6 +27,7 @@ class Messages extends React.Component {
                 <div className='container-dialogs'>
                     {this.setLinks()}
                 </div>
+                
                 {this.setRouts()}
     
             </div>

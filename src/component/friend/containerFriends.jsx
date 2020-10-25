@@ -7,14 +7,14 @@ import {subscribeAC, setUsersAC, setTotalUsersCountAC, setCurrentPageAC, setValu
 
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
-        if (this.props.users.length === 0)
+        if (this.props.users.length === 0){
             this.props.setValueIsFetchingAC()
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.sizePage}`).then(res => {
             this.props.setValueIsFetchingAC()    
             this.props.setUsersAC(res.data.items);
             this.props.setTotalUsersCountAC(res.data.totalCount);
-        })
-        
+        })} 
+
     }
 
     setPage = (page) => {
@@ -39,7 +39,8 @@ class FriendsClassComponent extends React.Component {
     isFetching = () => {
         if (!this.props.isFetching) {
             return <img className='loadGif' src={LoadGif} alt="load"/>
-        } return 
+        } 
+        return 
     }
 
     render() {
