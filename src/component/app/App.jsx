@@ -22,9 +22,9 @@ function App(props) {
                         <FastLinks />
                         <div className='content-main'>
                             <Route exact path='/friend' render= {() => <ContainerFriends/>} />
-                            <Route  path='/messages' render= {() => <ContainerMessages/>}/>
+                            <Route path='/messages' render= {() => <ContainerMessages/>}/>
                             <Route exact path='/news' render= {() => <News/>} />
-                            <Route exact path='/profile'  render= {() => <ContainerProfile/> }/>
+                            <Route path='/profile/:userId?'  render= {() => <ContainerProfile/> }/>
                             <Route exact path='/settings' render= {() => <Settings  />} />
                             <Route exact path='/music' render= {() => <Music/>} />
                         </div>
