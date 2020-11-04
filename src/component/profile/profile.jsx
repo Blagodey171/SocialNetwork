@@ -18,7 +18,8 @@ let profile = (props) => {
         <div className='profile'>
                 <div className='profile-info' >
                     <div className='profile-info__avatar' >
-                        <img className='profile-info__img' src={props.profile.photos.large} alt="" />
+                        { props.profile ? <img className='profile-info__img' src={props.profile.photos.large} alt="" /> : <img className='profile-info__img' src='../../img/avatar/w.jpg' alt="" />}
+                        
                         <div className='profile-info__settings-img' ></div>
                     </div>
                     <div className='profile-info__person-data' ></div>

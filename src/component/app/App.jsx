@@ -3,7 +3,7 @@ import './App.scss';
 import { Route } from 'react-router-dom';
 
 import Header from '../header/header';
-import FastLinks from '../fastLinks/fastLinks';
+import ContainerFastLinks from '../fastLinks/classComponentFastLinks';
 import ContainerFriends from '../friend/containerFriends.jsx';
 import News from '../news/news';
 import ContainerProfile from '../profile/containerProfile';
@@ -19,7 +19,7 @@ function App(props) {
                 <div className='container-two-column'>
                     <ContainerSidebar  />
                     <div className='content'>
-                        <FastLinks />
+                        <ContainerFastLinks />
                         <div className='content-main'>
                             <Route exact path='/friend' render= {() => <ContainerFriends/>} />
                             <Route path='/messages' render= {() => <ContainerMessages/>}/>

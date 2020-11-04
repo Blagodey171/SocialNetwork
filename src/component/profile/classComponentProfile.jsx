@@ -13,7 +13,6 @@ class classComponentProfile extends React.Component {
     componentDidMount = () => {
         let userId = this.props.match.params.userId;
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId ? userId : '2'}`).then(res => {
-            console.log(this.props)
             console.log(res.data)
             this.props.setProfileAC(res.data);
         })
