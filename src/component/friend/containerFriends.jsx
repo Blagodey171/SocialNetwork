@@ -9,8 +9,11 @@ class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0){
             this.props.setValueIsFetchingAC()
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.sizePage}`).then(res => {
-            this.props.setValueIsFetchingAC()    
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.sizePage}`, {
+                withCredentials: true,
+            }).then(res => {
+            this.props.setValueIsFetchingAC()
+            console.log(res)
             this.props.setUsersAC(res.data.items);
             this.props.setTotalUsersCountAC(res.data.totalCount);
         })} 
@@ -20,7 +23,9 @@ class FriendsClassComponent extends React.Component {
     setPage = (page) => {
         this.props.setCurrentPageAC(page)
         this.props.setValueIsFetchingAC()
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.sizePage}`).then(res => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.sizePage}`, {
+            withCredentials: true,
+        }).then(res => {
             this.props.setValueIsFetchingAC()
             this.props.setUsersAC(res.data.items)
         })

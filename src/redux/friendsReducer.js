@@ -20,7 +20,7 @@ let friendsReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
-                        return { ...user, follow: !user.follow }
+                        return { ...user, followed: !user.followed }
                     }
                     return user
                 })
