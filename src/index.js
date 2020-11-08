@@ -17,17 +17,9 @@ ReactDOM.render(
                 <App />
             </Provider>
         </React.StrictMode>
-
-
-
     </BrowserRouter>,
     document.getElementById('root')
 );
-
-
-// dispatch={Store.dispatch.bind(Store)} dialogs={state.dialogsReducer.dialogsPage.dialogsBlock} link={state.sidebarReducer.sidebar.link} postTextareaValue={state.profileReducer.profilePage.postTextareaValue}
-
-
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

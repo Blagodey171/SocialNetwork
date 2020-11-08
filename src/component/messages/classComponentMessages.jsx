@@ -4,7 +4,7 @@ import './messages.scss';
 import Chat from './chat/chat';
 import Frienditem from './frienditem/frienditem.jsx';
 
-class Messages extends React.Component {
+class classComponentMessages extends React.Component {
     
     constructor (props) {
         super(props);
@@ -17,7 +17,11 @@ class Messages extends React.Component {
     }
 
     setRouts() {
-        let routs = this.props.usersDialogs.map(friend => <Route path={`/messages/${friend.name}`} render={() => <Chat chatTextareaValue={friend.chatTextareaValue} changeDialogsTextareaValue={this.props.changeDialogsTextareaValue} addPost={this.props.addPost} name={friend.name} messages={friend.text} />} />);
+        let routs = this.props.usersDialogs.map(friend => 
+            <Route path={`/messages/${friend.name}`} render={() => 
+                <Chat chatTextareaValue={friend.chatTextareaValue} changeDialogsTextareaValue={this.props.changeDialogsTextareaValue} addPost={this.props.addPost} name={friend.name} messages={friend.text} />
+            } />);
+        
         return routs;
     }
 
@@ -27,14 +31,10 @@ class Messages extends React.Component {
                 <div className='container-dialogs'>
                     {this.setLinks()}
                 </div>
-                
                 {this.setRouts()}
-    
             </div>
-    
         )
     }
-    
 }
 
-export default Messages;
+export default classComponentMessages;

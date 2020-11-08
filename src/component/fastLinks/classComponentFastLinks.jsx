@@ -1,11 +1,8 @@
 import React from 'react';
 import FastLinks from './fastLinks';
-import * as axios from 'axios';
 import {setAuthProfileAC} from '../../redux/authReducer';
 import { connect } from 'react-redux';
-
-
-
+import { auth } from '../../DAL/authAPI';
 
 class ClassComponentFastLinks extends React.Component {
     constructor (props) {
@@ -14,11 +11,9 @@ class ClassComponentFastLinks extends React.Component {
     }
 
     componentDidMount () {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true,
-        }).then(res => {
-            if (res.data.resultCode === 0) {
-                this.props.setAuthProfileAC(res.data.data)
+        auth().then(data => {
+            if (data.resultCode === 0) {
+                this.props.setAuthProfileAC(data.data)
             }
         })
     }
@@ -28,15 +23,11 @@ class ClassComponentFastLinks extends React.Component {
     }
 }
 
-
-
-
 const mapStateToProps = (state) => {
     return {
         isAuth: state.authReducer.isAuth,
     }
 }
-
 
 export default connect(mapStateToProps, {
     setAuthProfileAC,

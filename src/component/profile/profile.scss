@@ -1,3 +1,8 @@
+$lightBG: rgb(213, 213, 255);
+$darkBG: rgb(138, 130, 130);
+$profileBlocksColor: rgb(239, 239, 255);
+
+
 .profile {
     padding: 10px;
     
@@ -26,7 +31,7 @@
             justify-content: space-around;
             align-items: center;
 
-            background-color: rgb(239, 239, 255);
+            background-color: $profileBlocksColor;
 
             
             .profile-info__img {
@@ -42,7 +47,20 @@
 
                 border-radius: 10px;
 
-                background-color: rgb(138, 130, 130);
+                background-color: $darkBG;
+            }
+
+            .profile-info__fullname {
+                min-width: 100px;
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background-color: $lightBG;
             }
         }
 
@@ -51,7 +69,20 @@
             height: 500px;
 
             border-radius: 10px;
-            background-color: rgb(239, 239, 255);
+            background-color: $profileBlocksColor;
+
+            .profile-info__about-me {
+                width: 100%;
+                height: 50px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background-color: $lightBG;
+
+                border-radius: 10px;
+            }
         }
     }
     .profile-wall {
@@ -72,21 +103,21 @@
             height: 500px;
 
             border-radius: 10px;
-            background-color: rgb(239, 239, 255);
+            background-color: $profileBlocksColor;
         }
 
         .profile-wall__posts {
             width: 680px;
             
             border-radius: 10px;
-            background-color: rgb(239, 239, 255);
+            background-color: $profileBlocksColor;
 
             .profile-wall__create-post {
 
                 height: 100px;
                 
                 border-radius: 10px;
-                background-color: rgb(213, 213, 255);
+                background-color: $lightBG;
 
                 display: flex;
                 flex-direction: column;

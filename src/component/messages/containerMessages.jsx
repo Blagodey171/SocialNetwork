@@ -1,6 +1,5 @@
-import React from 'react';
 import './messages.scss';
-import Messages from './messages.jsx';
+import classComponentMessages from './classComponentMessages.jsx';
 import { connect } from 'react-redux';
 import { changeDialogsTextareaValue, addPost } from '../../redux/dialogsReducer';
 
@@ -14,5 +13,5 @@ let mapStateToProps = (state) => {
 let containerMessages = connect(mapStateToProps, {
     changeDialogsTextareaValue,
     addPost,
-})(Messages)
+})(classComponentMessages)
 export default containerMessages;

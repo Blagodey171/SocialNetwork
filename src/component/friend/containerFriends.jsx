@@ -1,33 +1,27 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import * as axios from 'axios';
-import Friends from './friends';
+import { connect } from 'react-redux';
 import LoadGif from '../../img/loading/126.svg';
-import {subscribeAC, setUsersAC, setTotalUsersCountAC, setCurrentPageAC, setValueIsFetchingAC} from '../../redux/friendsReducer';
-
+import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC } from '../../redux/friendsReducer';
+import Friends from './friends';
+import {getUsers} from '../../DAL/userAPI';
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0){
             this.props.setValueIsFetchingAC()
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.sizePage}`, {
-                withCredentials: true,
-            }).then(res => {
-            this.props.setValueIsFetchingAC()
-            console.log(res)
-            this.props.setUsersAC(res.data.items);
-            this.props.setTotalUsersCountAC(res.data.totalCount);
-        })} 
 
+            getUsers(this.props.currentPage, this.props.sizePage).then(data => {
+                this.props.setValueIsFetchingAC()
+                this.props.setUsersAC(data.items);
+                this.props.setTotalUsersCountAC(data.totalCount);
+            })} 
     }
 
     setPage = (page) => {
         this.props.setCurrentPageAC(page)
         this.props.setValueIsFetchingAC()
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.sizePage}`, {
-            withCredentials: true,
-        }).then(res => {
+        getUsers(page, this.props.sizePage).then(data => {
             this.props.setValueIsFetchingAC()
-            this.props.setUsersAC(res.data.items)
+            this.props.setUsersAC(data.items)
         })
     }
 
@@ -49,7 +43,7 @@ class FriendsClassComponent extends React.Component {
     }
 
     render() {
-        return <Friends pages={this.pages()} setPage={this.setPage} currentPage={this.props.currentPage} subscribe={this.props.subscribeAC} setUsers={this.props.setUsersAC} users={this.props.users} isFetching={this.isFetching} />
+        return <Friends pages={this.pages()} subscribe={this.props.subscribeAC} users={this.props.users} isFetching={this.isFetching} />
     }
 }
 
