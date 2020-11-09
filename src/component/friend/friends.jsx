@@ -25,20 +25,27 @@ let friends = (props) => {
                                 {
 
                                     user.followed 
-                                    ? <button onClick={() => {
+                                    ? <button disabled = {props.disabledButtonFollow} onClick={() => {
+                                            props.setDisabledButtonFollowAC(true)
                                             unfollow(user.id).then(data => {
+                                                
                                                 if (data.resultCode === 0) {
-                                                    props.subscribe(user.id)
+                                                    props.subscribeAC(user.id)
                                                 }
+                                                props.setDisabledButtonFollowAC(false)
                                             })
+                                            
                                         }
-                                    } className='user-card__follow'>UNFOLLOW</button> 
-                                    : <button onClick={() => { 
+                                    }  className='user-card__follow'>UNFOLLOW</button> 
+                                    : <button disabled = {props.disabledButtonFollow} onClick={() => { 
+                                            props.setDisabledButtonFollowAC(true)
                                             follow(user.id).then(data => {
                                                 if (data.resultCode === 0) {
-                                                    props.subscribe(user.id)
+                                                    props.subscribeAC(user.id)
                                                 }
+                                                props.setDisabledButtonFollowAC(false)
                                             })
+                                            
                                         }
                                     } className='user-card__follow'>FOLLOW</button>
                                 }

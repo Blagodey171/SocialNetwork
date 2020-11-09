@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoadGif from '../../img/loading/126.svg';
-import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC } from '../../redux/friendsReducer';
+import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC , setDisabledButtonFollowAC} from '../../redux/friendsReducer';
 import Friends from './friends';
 import {getUsers} from '../../DAL/userAPI';
 class FriendsClassComponent extends React.Component {
@@ -43,7 +43,7 @@ class FriendsClassComponent extends React.Component {
     }
 
     render() {
-        return <Friends pages={this.pages()} subscribe={this.props.subscribeAC} users={this.props.users} isFetching={this.isFetching} />
+        return <Friends {...this.props} pages={this.pages()} isFetching={this.isFetching} />
     }
 }
 
@@ -56,6 +56,7 @@ let mapStateToProps = (state) => {
         sizePage: state.friendsReducer.sizePage,
         currentPage: state.friendsReducer.currentPage,
         isFetching: state.friendsReducer.isFetching,
+        disabledButtonFollow: state.friendsReducer.disabledButtonFollow,
     }
 }
 
@@ -66,5 +67,6 @@ export default connect(mapStateToProps, {
     setTotalUsersCountAC,
     setCurrentPageAC,
     setValueIsFetchingAC,
+    setDisabledButtonFollowAC,
 
 })(FriendsClassComponent)

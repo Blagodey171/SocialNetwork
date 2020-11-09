@@ -3,14 +3,16 @@ const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_ISFETCHING = 'SET-ISFETCHING';
+const SET_DISABLE_BUTTON_FOLLOW = 'SET-DISABLE-BUTTON-FOLLOW';
+
 
 let initialState = {
-
     users: [],
     totalUsersCount: 0,
     sizePage: 100,
     currentPage: 1,
     isFetching: true,
+    disabledButtonFollow: false,
 };
 
 let friendsReducer = (state = initialState, action) => {
@@ -46,6 +48,11 @@ let friendsReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: !state.isFetching
             }    
+        case SET_DISABLE_BUTTON_FOLLOW: 
+            return {
+                ...state,
+                disabledButtonFollow: action.disabled
+            }    
         default:
             return state;    
     }
@@ -79,6 +86,12 @@ export const setCurrentPageAC = (numberPage) => {
 export const setValueIsFetchingAC = () => {
     return {
         type: SET_ISFETCHING,
+    }
+}
+export const setDisabledButtonFollowAC = (value) => {
+    return {
+        type: SET_DISABLE_BUTTON_FOLLOW,
+        disabled: value,
     }
 }
 
