@@ -23,27 +23,25 @@ let friends = (props) => {
                                     <img src={user.photos.small} alt="" />
                                 </NavLink>
                                 {
-
                                     user.followed 
-                                    ? <button disabled = {props.disabledButtonFollow} onClick={() => {
-                                            props.setDisabledButtonFollowAC(true)
+                                    ? <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => {
+                                            props.setDisabledButtonFollowAC(true, user.id)
                                             unfollow(user.id).then(data => {
-                                                
                                                 if (data.resultCode === 0) {
                                                     props.subscribeAC(user.id)
                                                 }
-                                                props.setDisabledButtonFollowAC(false)
+                                                props.setDisabledButtonFollowAC(false, user.id)
                                             })
                                             
                                         }
                                     }  className='user-card__follow'>UNFOLLOW</button> 
-                                    : <button disabled = {props.disabledButtonFollow} onClick={() => { 
-                                            props.setDisabledButtonFollowAC(true)
+                                    : <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => { 
+                                            props.setDisabledButtonFollowAC(true, user.id)
                                             follow(user.id).then(data => {
                                                 if (data.resultCode === 0) {
                                                     props.subscribeAC(user.id)
                                                 }
-                                                props.setDisabledButtonFollowAC(false)
+                                                props.setDisabledButtonFollowAC(false, user.id)
                                             })
                                             
                                         }

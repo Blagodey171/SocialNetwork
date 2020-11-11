@@ -13,7 +13,8 @@ class FriendsClassComponent extends React.Component {
                 this.props.setValueIsFetchingAC()
                 this.props.setUsersAC(data.items);
                 this.props.setTotalUsersCountAC(data.totalCount);
-            })} 
+            })
+        } 
     }
 
     setPage = (page) => {
@@ -36,7 +37,7 @@ class FriendsClassComponent extends React.Component {
     }
 
     isFetching = () => {
-        if (!this.props.isFetching) {
+        if (this.props.isFetching) {
             return <img className='loadGif' src={LoadGif} alt="load"/>
         } 
         return 
@@ -51,12 +52,13 @@ class FriendsClassComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.friendsReducer.users,
-        totalUsersCount: state.friendsReducer.totalUsersCount,
-        sizePage: state.friendsReducer.sizePage,
-        currentPage: state.friendsReducer.currentPage,
-        isFetching: state.friendsReducer.isFetching,
-        disabledButtonFollow: state.friendsReducer.disabledButtonFollow,
+        ...state.friendsReducer
+        // users: state.friendsReducer.users,
+        // totalUsersCount: state.friendsReducer.totalUsersCount,
+        // sizePage: state.friendsReducer.sizePage,
+        // currentPage: state.friendsReducer.currentPage,
+        // isFetching: state.friendsReducer.isFetching,
+        // disabledButtonFollow: state.friendsReducer.disabledButtonFollow,
     }
 }
 
