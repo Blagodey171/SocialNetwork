@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoadGif from '../../img/loading/126.svg';
-import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC , setDisabledButtonFollowAC} from '../../redux/friendsReducer';
+import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC , setDisabledButtonFollowAC, unfollowThunkCreator, followThunkCreator} from '../../redux/friendsReducer';
 import Friends from './friends';
 import {getUsers} from '../../DAL/userAPI';
+
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0){
@@ -70,5 +71,7 @@ export default connect(mapStateToProps, {
     setCurrentPageAC,
     setValueIsFetchingAC,
     setDisabledButtonFollowAC,
+    unfollowThunkCreator,
+    followThunkCreator,
 
 })(FriendsClassComponent)

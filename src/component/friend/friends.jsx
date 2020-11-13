@@ -1,7 +1,7 @@
 import React from 'react';
 import './friends.scss'
 import { NavLink } from 'react-router-dom';
-import {follow, unfollow} from '../../DAL/userAPI';
+
 
 let friends = (props) => {
 
@@ -25,25 +25,11 @@ let friends = (props) => {
                                 {
                                     user.followed 
                                     ? <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => {
-                                            props.setDisabledButtonFollowAC(true, user.id)
-                                            unfollow(user.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.subscribeAC(user.id)
-                                                }
-                                                props.setDisabledButtonFollowAC(false, user.id)
-                                            })
-                                            
+                                        props.unfollowThunkCreator(user.id)
                                         }
                                     }  className='user-card__follow'>UNFOLLOW</button> 
                                     : <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => { 
-                                            props.setDisabledButtonFollowAC(true, user.id)
-                                            follow(user.id).then(data => {
-                                                if (data.resultCode === 0) {
-                                                    props.subscribeAC(user.id)
-                                                }
-                                                props.setDisabledButtonFollowAC(false, user.id)
-                                            })
-                                            
+                                        props.followThunkCreator(user.id)
                                         }
                                     } className='user-card__follow'>FOLLOW</button>
                                 }
