@@ -1,3 +1,4 @@
+import {setProfile} from '../DAL/profileAPI';
 const ADD_POST_TYPE = 'ADD-POST';
 const CHANGE_PROFILE_TEXTAREA_VALUE = 'CHANGE-PROFILE-TEXTAREA-VALUE';
 const SET_PROFILE = 'SET-PROFILE';
@@ -64,6 +65,14 @@ export const setProfileAC = (profile) => {
     return {
         type: SET_PROFILE,
         profile,
+    }
+}
+export const setProfileThunkCreator = (userId) => {
+    return (dispatch) => {
+        setProfile(userId).then(data => {
+            console.log(data)
+            dispatch(setProfileAC(data));
+        })
     }
 }
 export default profileReducer;

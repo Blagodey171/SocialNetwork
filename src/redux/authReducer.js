@@ -1,3 +1,4 @@
+import { auth } from '../DAL/authAPI';
 const SET_AUTH_PROFILE = 'SET-AUTH-PROFILE';
 
 let initialState = {
@@ -25,6 +26,17 @@ export const setAuthProfileAC = (data) => {
     return {
         type: SET_AUTH_PROFILE,
         data: {...data}
+    }
+}
+
+export const authThunkCreator = () => {
+    return (dispatch) => {
+        auth().then(data => {
+            console.log(data)
+            if (data.resultCode === 0) {
+                dispatch(setAuthProfileAC(data.data))
+            }
+        })
     }
 }
 

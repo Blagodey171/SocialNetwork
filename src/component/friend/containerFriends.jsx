@@ -1,30 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LoadGif from '../../img/loading/126.svg';
-import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC , setDisabledButtonFollowAC, unfollowThunkCreator, followThunkCreator} from '../../redux/friendsReducer';
+import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC , setDisabledButtonFollowAC, unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator} from '../../redux/friendsReducer';
 import Friends from './friends';
-import {getUsers} from '../../DAL/userAPI';
 
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0){
-            this.props.setValueIsFetchingAC()
-
-            getUsers(this.props.currentPage, this.props.sizePage).then(data => {
-                this.props.setValueIsFetchingAC()
-                this.props.setUsersAC(data.items);
-                this.props.setTotalUsersCountAC(data.totalCount);
-            })
+            this.props.getUsersThunkCreator(this.props.currentPage, this.props.sizePage)
         } 
     }
 
     setPage = (page) => {
-        this.props.setCurrentPageAC(page)
-        this.props.setValueIsFetchingAC()
-        getUsers(page, this.props.sizePage).then(data => {
-            this.props.setValueIsFetchingAC()
-            this.props.setUsersAC(data.items)
-        })
+        this.props.setPageThunkCreator(page, this.props.sizePage);
     }
 
     pages = () => {
@@ -73,5 +61,7 @@ export default connect(mapStateToProps, {
     setDisabledButtonFollowAC,
     unfollowThunkCreator,
     followThunkCreator,
+    getUsersThunkCreator,
+    setPageThunkCreator,
 
 })(FriendsClassComponent)

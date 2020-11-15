@@ -1,4 +1,6 @@
 import {follow, unfollow} from '../DAL/userAPI';
+import {getUsers} from '../DAL/userAPI';
+
 const SUBSCRIBE = 'SUBSCRIBE';
 const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
@@ -118,6 +120,28 @@ export const followThunkCreator = (userId) => {
                 dispatch(subscribeAC(userId))
             }
             dispatch(setDisabledButtonFollowAC(false, userId))
+        })
+    }
+}
+
+export const getUsersThunkCreator = (currentPage, sizePage) => {
+    return (dispatch) => {
+        dispatch(setValueIsFetchingAC())
+        getUsers(currentPage, sizePage).then(data => {
+            dispatch(setValueIsFetchingAC())
+            dispatch(setUsersAC(data.items));
+            dispatch(setTotalUsersCountAC(data.totalCount));
+        })
+    }
+}
+
+export const setPageThunkCreator = (page, sizePage) => {
+    return (dispatch) => {
+        dispatch(setCurrentPageAC(page));
+        dispatch(setValueIsFetchingAC());
+        getUsers(page, sizePage).then(data => {
+            dispatch(setValueIsFetchingAC());
+            dispatch(setUsersAC(data.items));
         })
     }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import FastLinks from './fastLinks';
-import {setAuthProfileAC} from '../../redux/authReducer';
+import {setAuthProfileAC, authThunkCreator} from '../../redux/authReducer';
 import { connect } from 'react-redux';
-import { auth } from '../../DAL/authAPI';
+
 
 class ClassComponentFastLinks extends React.Component {
     constructor (props) {
@@ -11,11 +11,7 @@ class ClassComponentFastLinks extends React.Component {
     }
 
     componentDidMount () {
-        auth().then(data => {
-            if (data.resultCode === 0) {
-                this.props.setAuthProfileAC(data.data)
-            }
-        })
+        this.props.authThunkCreator()
     }
 
     render() {
@@ -31,4 +27,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
     setAuthProfileAC,
+    authThunkCreator,
 })(ClassComponentFastLinks)
