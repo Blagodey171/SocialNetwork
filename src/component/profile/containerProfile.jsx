@@ -4,7 +4,9 @@ import Post from './post';
 import Profile from './profile.jsx';
 import { addPostAC, changeTextareaValueAC, setProfileAC, setProfileThunkCreator} from '../../redux/profileReducer';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/hoc';
+import { compose } from 'redux';
 
 class classComponentProfile extends React.Component {
     constructor(props) {
@@ -26,8 +28,6 @@ class classComponentProfile extends React.Component {
             <Profile {...this.props} posts={this.postsArray()} />
         )
     }
-
-
 }
 
 const mapStateToProps = (state) => {
@@ -35,12 +35,13 @@ const mapStateToProps = (state) => {
         ...state.profileReducer
     }
 }
-
-let withRouterClassComponentProfile = withRouter(classComponentProfile)
-
-export default connect(mapStateToProps, {
-    addPostAC,
-    changeTextareaValueAC,
-    setProfileAC,
-    setProfileThunkCreator,
-})(withRouterClassComponentProfile);
+export default compose(
+    connect(mapStateToProps, {
+        addPostAC,
+        changeTextareaValueAC,
+        setProfileAC,
+        setProfileThunkCreator,
+    }),
+    withRouter,
+    withAuthRedirect
+)(classComponentProfile);

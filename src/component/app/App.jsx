@@ -11,6 +11,8 @@ import Settings from '../settings/settings';
 import Music from '../music/music';
 import ContainerMessages from '../messages/containerMessages';
 import ContainerSidebar from '../sidebar/containerSidebar';
+import Login from '../login/login';
+
 
 function App(props) {
     return (
@@ -27,6 +29,7 @@ function App(props) {
                             <Route path='/profile/:userId?'  render= {() => <ContainerProfile/> }/>
                             <Route exact path='/settings' render= {() => <Settings  />} />
                             <Route exact path='/music' render= {() => <Music/>} />
+                            <Route exact path='/login' render= {() => <Login/>} />
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import FastLinks from './fastLinks';
-import {setAuthProfileAC, authThunkCreator} from '../../redux/authReducer';
+import {authThunkCreator} from '../../redux/authReducer';
 import { connect } from 'react-redux';
 
 
@@ -26,6 +26,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    setAuthProfileAC,
     authThunkCreator,
 })(ClassComponentFastLinks)
