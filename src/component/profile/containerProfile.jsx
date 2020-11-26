@@ -5,7 +5,7 @@ import Profile from './profile.jsx';
 import { addPostAC, changeTextareaValueAC, setProfileAC, setProfileThunkCreator} from '../../redux/profileReducer';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { withAuthRedirect } from '../../hoc/hoc';
+import { withAuthRedirect } from '../../HOC/withAuthRedirect';
 import { compose } from 'redux';
 
 class classComponentProfile extends React.Component {
@@ -18,6 +18,8 @@ class classComponentProfile extends React.Component {
         let userId = this.props.match.params.userId;
         this.props.setProfileThunkCreator(userId)
     }
+    
+    
 
     postsArray = () => {
         return this.props.posts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)

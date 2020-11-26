@@ -72,16 +72,38 @@ $profileBlocksColor: rgb(239, 239, 255);
             background-color: $profileBlocksColor;
 
             .profile-info__about-me {
-                width: 100%;
-                height: 50px;
+                max-width: 100%;
+                height: 30px;
 
+                margin: 5px;
+                padding: 4px;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
 
                 background-color: $lightBG;
 
                 border-radius: 10px;
+            }
+            .profile-info__status {
+                max-width: 100%;
+                height: 30px;
+
+                margin: 5px;
+                padding: 4px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                background-color: $lightBG;
+
+                border-radius: 10px;
+
+                .profile-info__form {
+                    .profile-info__message {
+                        outline: none;
+                    }
+                }
             }
         }
     }

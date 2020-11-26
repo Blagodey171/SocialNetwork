@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import LoadGif from '../../img/loading/126.svg';
 import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingAC, subscribeAC , setDisabledButtonFollowAC, unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator} from '../../redux/friendsReducer';
 import Friends from './friends';
-
+import {withAuthRedirect} from '../../HOC/withAuthRedirect';
+import { compose } from 'redux';
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0){
@@ -42,26 +43,24 @@ class FriendsClassComponent extends React.Component {
 let mapStateToProps = (state) => {
     return {
         ...state.friendsReducer
-        // users: state.friendsReducer.users,
-        // totalUsersCount: state.friendsReducer.totalUsersCount,
-        // sizePage: state.friendsReducer.sizePage,
-        // currentPage: state.friendsReducer.currentPage,
-        // isFetching: state.friendsReducer.isFetching,
-        // disabledButtonFollow: state.friendsReducer.disabledButtonFollow,
     }
 }
 
+export default compose(
+    connect(mapStateToProps, {
+        subscribeAC,
+        setUsersAC,
+        setTotalUsersCountAC,
+        setCurrentPageAC,
+        setValueIsFetchingAC,
+        setDisabledButtonFollowAC,
+        unfollowThunkCreator,
+        followThunkCreator,
+        getUsersThunkCreator,
+        setPageThunkCreator,
+    
+    }),
+    withAuthRedirect
+)(FriendsClassComponent)
 
-export default connect(mapStateToProps, {
-    subscribeAC,
-    setUsersAC,
-    setTotalUsersCountAC,
-    setCurrentPageAC,
-    setValueIsFetchingAC,
-    setDisabledButtonFollowAC,
-    unfollowThunkCreator,
-    followThunkCreator,
-    getUsersThunkCreator,
-    setPageThunkCreator,
-
-})(FriendsClassComponent)
+ 

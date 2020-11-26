@@ -1,7 +1,10 @@
 import {setProfile} from '../DAL/profileAPI';
+import {getProfileStatus} from '../DAL/profileStatusAPI';
+import { auth } from '../DAL/authAPI';
 const ADD_POST_TYPE = 'ADD-POST';
 const CHANGE_PROFILE_TEXTAREA_VALUE = 'CHANGE-PROFILE-TEXTAREA-VALUE';
 const SET_PROFILE = 'SET-PROFILE';
+const GET_PROFILE_STATUS = 'GET_PROFILE_STATUS';
 
 let initialStore = {
     posts: [
@@ -10,7 +13,8 @@ let initialStore = {
         { author: 'Vika', text: 'Hi, this is Redux', likesCount: 4 },
     ],
     postTextareaValue: 'khlfkgj',
-    profile: null
+    profile: null,
+    status: '',
 
     
 }
@@ -42,6 +46,12 @@ let profileReducer = (state = initialStore, action) => {
                 profile: action.profile
             }
         }    
+        case GET_PROFILE_STATUS: {
+            return {
+                ...state,
+                status: action.status
+            }
+        }    
         default :
             return state;
     }
@@ -67,12 +77,48 @@ export const setProfileAC = (profile) => {
         profile,
     }
 }
-export const setProfileThunkCreator = (userId) => {
-    return (dispatch) => {
-        setProfile(userId).then(data => {
-            console.log(data)
-            dispatch(setProfileAC(data));
-        })
+
+export const getProfileStatusAC = (status) => {
+    return {
+        type: GET_PROFILE_STATUS,
+        status,
     }
 }
+
+export const setProfileThunkCreator = (userId) => {
+    return (dispatch) => {
+        if (userId) {
+            setProfile(userId).then(data => {
+                dispatch(setProfileAC(data));
+            })
+        } else {
+            auth().then(data => {
+                setProfile(data.data.id).then(data => {
+                    console.log(data)
+                    dispatch(setProfileAC(data));
+                })
+            })
+        }
+        
+    }
+}
+
+export const getProfileStatusThunkCreator = (userId) => {
+    return (dispatch) => {
+        if(userId) {
+            getProfileStatus(userId).then(status => {
+                dispatch(getProfileStatusAC(status));
+            })
+        } else {
+            auth().then(data => {
+                getProfileStatus(data.data.id).then(data => {
+                    dispatch(getProfileStatusAC(data));
+                })
+            })
+        }
+        
+    }
+}
+
+
 export default profileReducer;

@@ -5,7 +5,6 @@ import Chat from './chat/chat';
 import Frienditem from './frienditem/frienditem.jsx';
 
 class classComponentMessages extends React.Component {
-    
     constructor (props) {
         super(props);
         this.props = props;
