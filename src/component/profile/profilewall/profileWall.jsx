@@ -1,29 +1,29 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
 
-const profileWall = (props) => {
+const ProfileWall = (props) => {
+    const { register, handleSubmit, errors } = useForm();
 
-    let ref = React.createRef();
+    let onSubmit = (e) => {props.addPostAC(e.postText)}
 
-    let changeTextareaProfile = () => {
-        let text = ref.current.value;
-        props.changeTextareaValueAC(text)
-    }
-
-    let addPost = () => {
-        props.addPostAC()
-    }
+    let inputMaxLength = 5;
+    let autofocus = true;
 
     return (
         <div className='profile-wall__posts' >
-                    <div className='profile-wall__create-post' >
-                        <textarea onChange={changeTextareaProfile} ref={ref} name="new-post" className='new-post' value={props.valueTextarea} ></textarea>
-                        <button onClick={addPost} className='add-post' >add post</button>
-                    </div>
-                    <div className='profile-wall__display-post' >
-                        {props.posts}
-                    </div>
-                </div>
+            <div className='profile-wall__create-post' >
+                <form onSubmit={handleSubmit(onSubmit)} className='profile-wall__create-post-form' >
+                    <input name={'postText'} autoFocus={autofocus} ref={register({required: true, maxLength: {value: inputMaxLength}})} className='new-post'></input>
+                    {errors.postText?.type === 'required' && "Your input is required"}
+                    {errors.postText?.type === 'maxLength' && `Your input max length is ${inputMaxLength}`}
+                    <button type={'submit'} className='add-post' >add post</button>
+                </form>
+            </div>
+            <div className='profile-wall__display-post' >
+                {props.posts}
+            </div>
+        </div>
     )
 }
 
-export default profileWall;
+export default ProfileWall;

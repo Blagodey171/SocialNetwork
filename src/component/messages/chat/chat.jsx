@@ -1,19 +1,11 @@
 import React from 'react';
+import { Form, Field } from 'react-final-form';
 import './chat.scss';
 
 let chat = (props) => {
-    let textareaValueDialogs = React.createRef();
-
-    let changeTextareaDialogs = () => {
-        let value = textareaValueDialogs.current.value;
-        let name = textareaValueDialogs.current.name;
-        props.changeDialogsTextareaValue(value, name)
-
-    }
-
-    let addMessage = () => {
-        let name = textareaValueDialogs.current.name;
-        props.addPost(name);
+    const onSubmit = (e) => {
+        let getNameKey = Object.keys(e)[0];
+        props.addPost(e[props.name], getNameKey);
     }
 
     return (
@@ -23,8 +15,15 @@ let chat = (props) => {
                     {props.messages}
                 </div>
             </div>
-            <textarea name={props.name} value={props.chatTextareaValue} onChange={changeTextareaDialogs} ref={textareaValueDialogs} className='textarea' placeholder='Введите сообщение...' ></textarea>
-            <button onClick={addMessage} className='postBtn'>send</button>
+            <Form onSubmit={onSubmit} render={({ handleSubmit }) => {
+                return (
+                    <form onSubmit={handleSubmit}>
+                        <Field component={'input'} name={props.name} value={props.chatTextareaValue} className='textarea' placeholder='Введите сообщение...' ></Field>
+                        <button type={'submit'} className='postBtn'>send</button>
+                    </form>
+                )
+            }} />
+            
         </div>
 
 

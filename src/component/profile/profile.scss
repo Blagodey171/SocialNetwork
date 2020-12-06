@@ -100,10 +100,18 @@ $profileBlocksColor: rgb(239, 239, 255);
                 border-radius: 10px;
 
                 .profile-info__form {
+                    width: 100%;
+                    height: 100%;
                     .profile-info__message {
                         outline: none;
                     }
+                    .profile-info__p {
+                        width: 50px;
+                        height: 20px;
+                        background-color: #ccc;
+                    }
                 }
+                
             }
         }
     }
@@ -143,8 +151,18 @@ $profileBlocksColor: rgb(239, 239, 255);
 
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: center;
                 align-items: center;
+
+                .profile-wall__create-post-form {
+                    width: 100%;
+                    height: 100%;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                }
                 .new-post {
                     width: 300px;
                     height: 50px;

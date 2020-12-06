@@ -10,12 +10,12 @@ class classComponentMessages extends React.Component {
         this.props = props;
     }
 
-    setLinks() {
+    getLinks() {
         let linkToChat = this.props.usersDialogs.map(friend => <Frienditem to={friend.link} avatarImg={friend.img} name={friend.name} id={friend.id} />);
         return linkToChat;
     }
 
-    setRouts() {
+    getRouts() {
         let routs = this.props.usersDialogs.map(friend => 
             <Route path={`/messages/${friend.name}`} render={() => 
                 <Chat chatTextareaValue={friend.chatTextareaValue} changeDialogsTextareaValue={this.props.changeDialogsTextareaValue} addPost={this.props.addPost} name={friend.name} messages={friend.text} />
@@ -28,9 +28,9 @@ class classComponentMessages extends React.Component {
         return (
             <div className='container'>
                 <div className='container-dialogs'>
-                    {this.setLinks()}
+                    {this.getLinks()}
                 </div>
-                {this.setRouts()}
+                {this.getRouts()}
             </div>
         )
     }

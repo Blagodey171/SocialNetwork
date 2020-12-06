@@ -1,5 +1,3 @@
-
-const CHANGE_DIALOGS_TEXTAREA_VALUE = 'CHANGE-DIALOGS-TEXTAREA-VALUE';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 
 let initialStore = {
@@ -15,24 +13,10 @@ let initialStore = {
 
 let dialogsReducer = (state = initialStore, action) => {
     switch (action.type) {
-        case CHANGE_DIALOGS_TEXTAREA_VALUE:
-            state.dialogsBlock.find(friend => {
-                if(friend.name === action.name) {
-                    friend.chatTextareaValue = action.text
-                }
-                
-            })
-            return {
-                ...state,
-                dialogsBlock: [...state.dialogsBlock]
-            }
-            
-            
         case ADD_MESSAGE:
             state.dialogsBlock.find(friend => {
                 if(friend.name === action.name) {
-                    friend.text = [...friend.text, friend.chatTextareaValue]
-                    friend.chatTextareaValue = '';
+                    friend.text = [...friend.text, action.text]
                 }
             })
             return {
@@ -47,18 +31,12 @@ let dialogsReducer = (state = initialStore, action) => {
 
 }
 
-export const addPost = (name) => {
+export const addPost = (name, text) => {
     return {
         type: ADD_MESSAGE,
         name,
+        text,
     }
 };
 
-export const changeDialogsTextareaValue = (value, name) => {
-    return {
-        type: CHANGE_DIALOGS_TEXTAREA_VALUE,
-        text: value,
-        name,
-    }
-};
 export default dialogsReducer;

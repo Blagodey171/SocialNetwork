@@ -10,7 +10,7 @@ let profile = (props) => {
 
     return (
         <div className='profile'>
-            <ContainerProfilePersonData />
+            <ContainerProfilePersonData {...props} />
             
             <div className='profile-wall' >
                 <ProfileContent {...props} />
