@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 const ProfileWall = (props) => {
     const { register, handleSubmit, errors } = useForm();
 
-    let onSubmit = (e) => {props.addPostAC(e.postText)}
+    let onSubmit = (value) => {props.addPostAC(value.postText)}
 
     let inputMaxLength = 5;
     let autofocus = true;

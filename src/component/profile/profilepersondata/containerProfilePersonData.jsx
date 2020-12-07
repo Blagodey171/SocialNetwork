@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 
 let СontainerProfilePersonData = (props) => {
     let [mode, setMode] = useState(false);
-    const { handleSubmit, errors, register} = useForm({mode: 'onBlur'});
+
+    const { handleSubmit, errors, register} = useForm({});
     const inputMaxLength = 10;
 
     let activateMode = () => {

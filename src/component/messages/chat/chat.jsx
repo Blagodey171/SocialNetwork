@@ -1,13 +1,17 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form';
+import { useForm } from 'react-hook-form';
 import './chat.scss';
 
-let chat = (props) => {
-    const onSubmit = (e) => {
-        let getNameKey = Object.keys(e)[0];
-        props.addPost(e[props.name], getNameKey);
-    }
+let Chat = (props) => {
+    const {handleSubmit, errors, register} = useForm()
 
+    let {name: Danil} = props;
+
+    const onSubmit = (e) => {
+        props.addPost(props.name, e.Danil);
+    }
+    const inputMaxLength = 10;
+    
     return (
         <div className='window-chat'>
             <div className='chat-container'>
@@ -15,15 +19,12 @@ let chat = (props) => {
                     {props.messages}
                 </div>
             </div>
-            <Form onSubmit={onSubmit} render={({ handleSubmit }) => {
-                return (
-                    <form onSubmit={handleSubmit}>
-                        <Field component={'input'} name={props.name} value={props.chatTextareaValue} className='textarea' placeholder='Введите сообщение...' ></Field>
-                        <button type={'submit'} className='postBtn'>send</button>
-                    </form>
-                )
-            }} />
-            
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input name={Danil} ref={register({required: true, maxLength: {value: inputMaxLength}})} className='textarea' placeholder='Введите сообщение...' ></input>
+                {errors.Danil?.type === 'maxLength' && `Input max length is ${inputMaxLength}`}
+                <button type={'submit'} className='postBtn'>send</button>
+            </form>
+
         </div>
 
 
@@ -31,4 +32,4 @@ let chat = (props) => {
     )
 }
 
-export default chat;
+export default Chat;
