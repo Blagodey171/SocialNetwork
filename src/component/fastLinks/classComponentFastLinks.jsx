@@ -1,6 +1,6 @@
 import React from 'react';
 import FastLinks from './fastLinks';
-import {authThunkCreator} from '../../redux/authReducer';
+import { authThunkCreator, logoutThunkCreator} from '../../redux/authReducer';
 import { connect } from 'react-redux';
 
 
@@ -13,6 +13,9 @@ class ClassComponentFastLinks extends React.Component {
     componentDidMount () {
         this.props.authThunkCreator()
     }
+    componentDidUpdate () {
+
+    }
 
     render() {
         return <FastLinks {...this.props} />
@@ -21,10 +24,11 @@ class ClassComponentFastLinks extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.authReducer.isAuth,
+        ...state.authReducer
     }
 }
 
 export default connect(mapStateToProps, {
     authThunkCreator,
+    logoutThunkCreator,
 })(ClassComponentFastLinks)

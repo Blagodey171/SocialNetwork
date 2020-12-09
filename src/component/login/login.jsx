@@ -1,49 +1,58 @@
 import React from 'react';
-import { Field, Form } from 'react-final-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { useForm } from 'react-hook-form';
+import { loginThunkCreator } from '../../redux/authReducer';
+import authReducer from '../../redux/authReducer';
+import { Redirect } from 'react-router-dom';
+
 
 const LoginForm = (props) => {
-    const onSubmit = (e) => {
-        console.log(e)
+    const {handleSubmit, errors, register} = useForm();
+
+    const onSubmit = (data) => {
+        props.loginThunkCreator(data.email, data.password, data.rememberMe)
+
+    }
+
+    const loginMinLength = 7;
+
+    if (props.isAuth) {
+        return <Redirect to={'/profile'}/>
     }
     return (
-        <Form  onSubmit={onSubmit} render={({ handleSubmit }) => {
-            return (
-                <form onSubmit={handleSubmit} >
-                    <div>
-                        <Field component='input' name='login' />
-                    </div>
-                    <div>
-                        <Field component='input' name='password' />
-                    </div>
-                    <div>
-                        <Field component='input' type='checkbox' name='rememberMe' />
-                    </div>
-                    <div>
-                        <button type='submit' >login</button>
-                    </div>
-                </form>
-            )
-        }} />
+
+        <form onSubmit={handleSubmit(onSubmit)} >
+            <div>
+                <input name='email' ref={register({ required: true })} />
+                
+            </div>
+            <div>
+                <input name='password' ref={register({ required: true, minLength: { value: loginMinLength } })}/>
+                {errors.password?.type === 'minLength' && `min length is ${loginMinLength}`}
+            </div>
+            <div>
+                <input type='checkbox' name='rememberMe' ref={register({ required: false, })} />
+                <p>remember me</p>
+            </div>
+            <div>
+                <button type='submit' >login</button>
+            </div>
+        </form>
+
 
     )
 }
 
-const login = (props) => {
-    return (
-        <div>
-            <LoginForm  />
-        </div>
-    )
-}
+
 
 let mapStateToProps = (state) => {
     return {
         ...state.profileReducer,
+        ...state.authReducer,
     }
 }
 
 export default compose(
-    connect(mapStateToProps)
-)(login);
+    connect(mapStateToProps, {loginThunkCreator, })
+)(LoginForm);

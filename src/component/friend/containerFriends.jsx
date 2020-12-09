@@ -5,6 +5,7 @@ import { setCurrentPageAC, setTotalUsersCountAC, setUsersAC, setValueIsFetchingA
 import Friends from './friends';
 import {withAuthRedirect} from '../../HOC/withAuthRedirect';
 import { compose } from 'redux';
+
 class FriendsClassComponent extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0){

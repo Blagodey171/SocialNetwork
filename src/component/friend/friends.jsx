@@ -23,12 +23,12 @@ let friends = (props) => {
                                     <img src={user.photos.small} alt="" />
                                 </NavLink>
                                 {
-                                    user.followed 
+                                    user.followed
                                     ? <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => {
                                         props.unfollowThunkCreator(user.id)
                                         }
                                     }  className='user-card__follow'>UNFOLLOW</button> 
-                                    : <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => { 
+                                    : <button disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} onClick={() => {
                                         props.followThunkCreator(user.id)
                                         }
                                     } className='user-card__follow'>FOLLOW</button>
