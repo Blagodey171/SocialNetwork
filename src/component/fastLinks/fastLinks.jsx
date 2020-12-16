@@ -4,8 +4,6 @@ import {NavLink} from 'react-router-dom';
 
 
 let fastLinks = (props) => {
-    console.log(props)
-    
     return (
         <div className='containerFastLinks'>
             {

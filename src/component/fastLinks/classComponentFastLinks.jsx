@@ -11,7 +11,6 @@ class ClassComponentFastLinks extends React.Component {
     }
 
     componentDidMount () {
-        this.props.authThunkCreator()
     }
     componentDidUpdate () {
 

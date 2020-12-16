@@ -1,16 +1,15 @@
 import React from 'react';
 import './friends.scss'
 import { NavLink } from 'react-router-dom';
+import Preloader from '../preloader/preloader';
 
 
 let friends = (props) => {
 
+    if (props.isFetching) {return <Preloader/>}
 
     return (
         <div className='container'>
-            {
-                props.isFetching()
-            }
             <div className='container-pages' >
                 {props.pages}
             </div>

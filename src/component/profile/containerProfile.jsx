@@ -37,7 +37,9 @@ class classComponentProfile extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        ...state.profileReducer
+        ...state.profileReducer,
+        id: state.authReducer.id,
+        isAuth: state.authReducer.isAuth,
     }
 }
 export default compose(

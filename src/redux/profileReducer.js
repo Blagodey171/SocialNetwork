@@ -13,8 +13,6 @@ let initialStore = {
     ],
     profile: null,
     status: '',
-
-
 }
 
 let profileReducer = (state = initialStore, action) => {
