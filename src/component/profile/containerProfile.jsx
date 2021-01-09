@@ -3,6 +3,7 @@ import './profile.scss';
 import Post from './post';
 import Profile from './profile.jsx';
 import { addPostAC, setProfileAC, setProfileThunkCreator, putProfileStatusThunkCreator} from '../../redux/profileReducer';
+import { getAuthId, getAuthStatus, getModefiedPostsArray } from '../../redux/selectors';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../HOC/withAuthRedirect';
@@ -25,21 +26,23 @@ class classComponentProfile extends React.Component {
     
 
     postsArray = () => {
-        return this.props.posts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)
+        return this.props.profilePosts.map(post => <Post author={post.author} text={post.text} likes={post.likesCount} />)
     }
 
     render() {
         return (
-            <Profile {...this.props} posts={this.postsArray()} />
+            <Profile {...this.props} posts={this.props.profilePosts} />
         )
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        ...state.profileReducer,
-        id: state.authReducer.id,
-        isAuth: state.authReducer.isAuth,
+        profilePosts: getModefiedPostsArray(state),
+        profile: state.profileReducer.profile,
+        status: state.profileReducer.status,
+        id: getAuthId(state),
+        isAuth: getAuthStatus(state),
     }
 }
 export default compose(

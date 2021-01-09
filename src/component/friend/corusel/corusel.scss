@@ -1,0 +1,54 @@
+.corusel {
+    width: 500px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .corusel_leftArrow{
+        width: 30px;
+        height: 30px;
+
+        transform: rotate(180deg);
+    }
+    .corusel_rightArrow {
+        width: 30px;
+        height: 30px;
+    }
+    .corusel_content{
+        width: 80%;
+        height: 100%;
+
+        overflow: hidden;
+        .corusel_pages-link{
+            min-width: 1000px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            .pageNumber {
+                padding: 5px;
+                margin: 5px;
+                border: solid 1px #000;
+                cursor: pointer;
+            }
+            .selected {
+                font-weight: bold;
+                border: none;
+
+                text-decoration: underline;
+            }
+        }
+    }
+    .corusel_arrow {
+        width: 30px;
+        height: 30px;
+
+        cursor: pointer;
+    }
+
+}

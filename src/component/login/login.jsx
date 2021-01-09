@@ -33,7 +33,7 @@ let LoginForm = (props) => {
                 <p>remember me</p>
             </div>
             {
-                props.messageForIncorrectRegistration ? <div className='login__error-message'><p>{props.messageForIncorrectRegistration}</p></div> : <p>{'hello'}</p>
+                props.messageForIncorrectRegistration ? <div className='login__error-message'><p>{props.messageForIncorrectRegistration}</p></div> : <div className='login__error-message'><p>{'Введите логин и пароль'}</p></div>
             }
             <div>
                 <button type='submit' >login</button>
@@ -48,8 +48,8 @@ let LoginForm = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        ...state.profileReducer,
-        ...state.authReducer,
+        isAuth: state.authReducer.isAuth,
+        messageForIncorrectRegistration: state.authReducer.messageForIncorrectRegistration,
     }
 }
 

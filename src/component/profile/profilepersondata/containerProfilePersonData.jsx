@@ -57,10 +57,9 @@ let СontainerProfilePersonData = (props) => {
                             <form className="profile-info__form" onBlur={handleSubmit(onSubmit)}>
                                 {
                                     mode
-                                    ? <input name={'statusInput'} placeholder='new post' ref={register({required: false, maxLength: {value: inputMaxLength}})} defaultValue={props.status} autoFocus className='profile-info__message' type="text" />
+                                    ? <input name={'statusInput'} placeholder='new post' ref={register({maxLength: {value: inputMaxLength}})} defaultValue={props.status} autoFocus className='profile-info__message' type="text" />
                                     : <p className='profile-info__p' onClick={activateMode}>{props.status}</p>
                                 }
-                                {errors.statusInput?.type === 'required' && 'Your input is required'}
                                 {errors.statusInput?.type === 'maxLength' && `Your input max length is ${inputMaxLength}`}
                             </form>
                             

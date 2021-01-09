@@ -2,7 +2,7 @@ import React from 'react';
 import './friends.scss'
 import { NavLink } from 'react-router-dom';
 import Preloader from '../preloader/preloader';
-
+import Corusel from './corusel/corusel.jsx';
 
 let friends = (props) => {
 
@@ -10,9 +10,11 @@ let friends = (props) => {
 
     return (
         <div className='container'>
-            <div className='container-pages' >
+            {/* <div className='container-pages' >
                 {props.pages}
-            </div>
+            </div> */}
+            <Corusel pages={props.pages} />
+
             <div className='container-user-card' >
                 {
                     props.users.map(user =>
