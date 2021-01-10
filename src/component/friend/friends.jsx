@@ -5,19 +5,13 @@ import Preloader from '../preloader/preloader';
 import Corusel from './corusel/corusel.jsx';
 
 let friends = (props) => {
-
-    if (props.isFetching) {return <Preloader/>}
-
     return (
         <div className='container'>
-            {/* <div className='container-pages' >
-                {props.pages}
-            </div> */}
             <Corusel pages={props.pages} />
-
             <div className='container-user-card' >
                 {
-                    props.users.map(user =>
+                    props.isFetching ? <Preloader/>
+                    : props.users.map(user =>
                         <div className='user-card' >
                             <div className='user-card__avatar'>
                                 <NavLink to={`profile/${user.id}`}>

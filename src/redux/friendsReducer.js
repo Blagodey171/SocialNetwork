@@ -12,7 +12,7 @@ const SET_DISABLE_BUTTON_FOLLOW = 'SET-DISABLE-BUTTON-FOLLOW';
 let initialState = {
     users: [],
     totalUsersCount: 0,
-    sizePage: 100,
+    sizePage: 33,
     currentPage: 1,
     isFetching: false,
     disabledButtonFollow: [],
