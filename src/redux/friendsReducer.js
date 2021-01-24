@@ -56,7 +56,7 @@ let friendsReducer = (state = initialState, action) => {
                 ...state,
                 disabledButtonFollow: action.disabled
                     ? [...state.disabledButtonFollow, action.userId]
-                    : state.disabledButtonFollow.filter(userId => userId != action.userId)
+                    : state.disabledButtonFollow.filter(userId => userId !== action.userId)
             }
         default:
             return state;

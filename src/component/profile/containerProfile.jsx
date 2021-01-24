@@ -2,12 +2,11 @@ import React from 'react';
 import './profile.scss';
 import Post from './post';
 import Profile from './profile.jsx';
-import { addPostAC, setProfileAC, setProfileThunkCreator, putProfileStatusThunkCreator} from '../../redux/profileReducer';
+import { addPostAC, setProfileAC, setProfileThunkCreator, putProfileStatusThunkCreator, getProfileStatusThunkCreator} from '../../redux/profileReducer';
 import { getAuthId, getAuthStatus, getModefiedPostsArray } from '../../redux/selectors';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../HOC/withAuthRedirect';
-import { getProfileStatusThunkCreator } from '../../redux/profileReducer';
 import { compose } from 'redux';
 
 class classComponentProfile extends React.Component {

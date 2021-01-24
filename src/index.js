@@ -12,11 +12,9 @@ import Store from './redux/redux-store';
 ReactDOM.render(
     <BrowserRouter>
         {/* строгий режим протестировать с DidMount */}
-        <React.StrictMode>
             <Provider store={Store} >
                 <App />
             </Provider>
-        </React.StrictMode>
     </BrowserRouter>,
     document.getElementById('root')
 );

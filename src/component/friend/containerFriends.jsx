@@ -25,7 +25,7 @@ class FriendsClassComponent extends React.Component {
     }
 
     render() {
-        return <Friends {...this.props} pages={this.pages()} isFetching={this.props.isFetching} />
+        return <Friends {...this.props} corusel={this.props.corusel} pages={this.pages()} isFetching={this.props.isFetching} />
     }
 }
 
@@ -33,7 +33,8 @@ class FriendsClassComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        ...state.friendsReducer
+        ...state.friendsReducer,
+        corusel: {...state.coruselReducer}
     }
 }
 
@@ -43,7 +44,6 @@ export default compose(
         followThunkCreator,
         getUsersThunkCreator,
         setPageThunkCreator,
-    
     }),
 )(FriendsClassComponent)
 

@@ -5,9 +5,6 @@ import ProfileContent from './profilecontent/profileContent';
 import ProfileWall from './profilewall/profileWall';
 
 let profile = (props) => {
-
-    
-
     return (
         <div className='profile'>
             <ContainerProfilePersonData {...props} />

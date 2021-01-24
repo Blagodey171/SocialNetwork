@@ -2,12 +2,13 @@ import React from 'react';
 import './friends.scss'
 import { NavLink } from 'react-router-dom';
 import Preloader from '../preloader/preloader';
-import Corusel from './corusel/corusel.jsx';
-
+// import CoruselContainer from './corusel/coruselContainer.jsx';
+import CoruselReducerr from './corusel/coruselReducer.jsx';
+// corusel={props.corusel}
 let friends = (props) => {
     return (
         <div className='container'>
-            <Corusel pages={props.pages} />
+                <CoruselReducerr pages={props.pages}  />
             <div className='container-user-card' >
                 {
                     props.isFetching ? <Preloader/>

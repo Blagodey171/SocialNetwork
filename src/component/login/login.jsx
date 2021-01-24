@@ -12,6 +12,7 @@ let LoginForm = (props) => {
     const onSubmit = (data) => {
         props.loginThunkCreator(data.email, data.password, data.rememberMe)
     }
+
     const loginMinLength = 7;
     if (props.isAuth) {
         return <Redirect to={'/profile'}/>
@@ -22,7 +23,6 @@ let LoginForm = (props) => {
         <form onSubmit={handleSubmit(onSubmit)} >
             <div>
                 <input name='email' ref={register({ required: true })} />
-                
             </div>
             <div>
                 <input name='password' ref={register({ required: true, minLength: { value: loginMinLength } })}/>
@@ -33,7 +33,8 @@ let LoginForm = (props) => {
                 <p>remember me</p>
             </div>
             {
-                props.messageForIncorrectRegistration ? <div className='login__error-message'><p>{props.messageForIncorrectRegistration}</p></div> : <div className='login__error-message'><p>{'Введите логин и пароль'}</p></div>
+                props.messageForIncorrectRegistration ? <div className='login__error-message'><p>{props.messageForIncorrectRegistration}</p></div> 
+                : <div className='login__error-message'><p>{'Введите логин и пароль'}</p></div>
             }
             <div>
                 <button type='submit' >login</button>

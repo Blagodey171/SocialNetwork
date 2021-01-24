@@ -6,6 +6,7 @@ import sidebarReducer from '../redux/sidebarReducer';
 import friendsReducer from '../redux/friendsReducer';
 import authReducer from '../redux/authReducer';
 import appReducer from '../redux/appReducer';
+import coruselReducer from '../redux/coruselReducer';
 
 
 let reducers = combineReducers({
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     sidebarReducer, 
     friendsReducer,
     authReducer,
+    coruselReducer
 })
 
 let store = createStore(reducers, applyMiddleware(thunk));

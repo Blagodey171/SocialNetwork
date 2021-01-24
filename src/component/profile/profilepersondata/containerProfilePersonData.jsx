@@ -16,29 +16,7 @@ let СontainerProfilePersonData = (props) => {
         props.putProfileStatusThunkCreator(value.statusInput)
     }
 
-    // componentDidMount = () => {}
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevProps.status !== this.props.status) {
-    //         this.setState({
-    //             status: this.props.status
-    //         })
-    //     }
-    // }
-    // state = {
-    //     mode: false,
-    //     status: this.props.status
-    // }
     
-    // deactivateMode = () => {
-    //     
-    // }
-
-    // onChangeStatus = (e) => {
-    //     this.setState({
-    //         status: e.currentTarget.value
-    //     })
-    // }
-
         return (
             <div className='profile-info' >
                     <div className='profile-info__avatar' >
@@ -57,7 +35,7 @@ let СontainerProfilePersonData = (props) => {
                             <form className="profile-info__form" onBlur={handleSubmit(onSubmit)}>
                                 {
                                     mode
-                                    ? <input name={'statusInput'} placeholder='new post' ref={register({maxLength: {value: inputMaxLength}})} defaultValue={props.status} autoFocus className='profile-info__message' type="text" />
+                                    ? <input name={'statusInput'} placeholder='new status' ref={register({maxLength: {value: inputMaxLength}})} defaultValue={props.status} autoFocus className='profile-info__message' type="text" />
                                     : <p className='profile-info__p' onClick={activateMode}>{props.status}</p>
                                 }
                                 {errors.statusInput?.type === 'maxLength' && `Your input max length is ${inputMaxLength}`}
@@ -97,3 +75,26 @@ export default СontainerProfilePersonData
 //     }),
 //     withRouter,
 // )(containerProfilePersonData); 
+
+// componentDidMount = () => {}
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.status !== this.props.status) {
+    //         this.setState({
+    //             status: this.props.status
+    //         })
+    //     }
+    // }
+    // state = {
+    //     mode: false,
+    //     status: this.props.status
+    // }
+    
+    // deactivateMode = () => {
+    //     
+    // }
+
+    // onChangeStatus = (e) => {
+    //     this.setState({
+    //         status: e.currentTarget.value
+    //     })
+    // }

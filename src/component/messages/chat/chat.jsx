@@ -26,9 +26,6 @@ let Chat = (props) => {
             </form>
 
         </div>
-
-
-
     )
 }
 
