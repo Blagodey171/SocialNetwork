@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useRef, useEffect } from 'react';
 import arrow from '../../../img/corusel/arrow.svg';
 import './corusel.scss';
 
@@ -9,7 +9,7 @@ const CHANGE_POSITION_SLIDER = 'CHANGE-POSITION-SLIDER';
 const CHANGE_CORUSEL_STEP = 'CHANGE-CORUSEL-STEP';
 
 
-function reducer (state, action) {
+function reducer(state, action) {
     switch (action.type) {
         case RIGHT_SLIDE: {
             debugger
@@ -50,11 +50,10 @@ const CoruselReducer = (props) => {
     const [state, dispatch] = useReducer(reducer, {
         clickCount: 0,
         positionSlider: 0,
-        amountMoveElements: 5,
         sliderElementWidth: 37,
-        coruselStep: 185,
-        maxSlideRight: -10138,
-        elementsView: 10
+        coruselStep: 370,
+        transform: `transform .5s`,
+        windowWidth: null,
     })
     const rightSlideAC = (clickCount) => {
         dispatch({
@@ -86,15 +85,24 @@ const CoruselReducer = (props) => {
             coruselStep,
         })
     }
-    
+
+    const amountMoveElements = useRef(10);
+
+    let windowWidth = window.innerWidth;
+    useEffect(() => {
+        debugger
+        if (windowWidth < 1000) {
+            amountMoveElements.current = 5;
+            let corusel = document.querySelector('.corusel_content');
+            corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
+            changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
+        }
+    }, [state.sliderElementWidth, windowWidth])
     // длительность слайда в секундах,можно вынести в редюсер или еще куда(пока тут)
-    const transform = `transform .5s`;
-    
     function splittingPages() {
         return {
-            common: props.pages.length / state.elementsView,
-            remainder: props.pages.length % state.elementsView,
-            maxClick: props.pages.length / state.amountMoveElements,
+            common: props.pages.length / amountMoveElements.current,
+            remainder: props.pages.length % amountMoveElements.current,
         }
     }
     function sliderMoveOption() {
@@ -118,7 +126,7 @@ const CoruselReducer = (props) => {
             sliderMoveOption();
         } else if (e.target === rightArrow) {
             // проверка - достигли ли мы максимального количества кликов вправо
-            if (Math.ceil(splittingPages().maxClick * -1) === state.clickCount) {
+            if (Math.ceil(splittingPages().common * -1) === state.clickCount) {
                 return;
             }
             rightSlideAC(--state.clickCount);
@@ -127,19 +135,19 @@ const CoruselReducer = (props) => {
     }
 
     return (
-            <div className='corusel'>
-                <div className="corusel_arrow" >
-                    <img className='corusel_leftArrow' onClick={clickHandler} src={arrow} alt="left" />
-                </div>
-                <div className="corusel_content">
-                    <div className='corusel_pages-link' style={{ transition: transform, transform: `translateX(${state.positionSlider}px)` }}>
-                        {props.pages}
-                    </div>
-                </div>
-                <div className="corusel_arrow" >
-                    <img className='corusel_rightArrow' onClick={clickHandler} src={arrow} alt="right" />
+        <div className='corusel'>
+            <div className="corusel_arrow" >
+                <img className='corusel_leftArrow' onClick={clickHandler} src={arrow} alt="left" />
+            </div>
+            <div className="corusel_content">
+                <div className='corusel_pages-link' style={{ transition: state.transform, transform: `translateX(${state.positionSlider}px)` }}>
+                    {props.pages}
                 </div>
             </div>
+            <div className="corusel_arrow" >
+                <img className='corusel_rightArrow' onClick={clickHandler} src={arrow} alt="right" />
+            </div>
+        </div>
     )
 }
 
