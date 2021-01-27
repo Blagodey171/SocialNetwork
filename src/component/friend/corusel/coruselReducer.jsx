@@ -1,4 +1,5 @@
 import React, { useReducer, useRef, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import arrow from '../../../img/corusel/arrow.svg';
 import './corusel.scss';
 
@@ -12,7 +13,6 @@ const CHANGE_CORUSEL_STEP = 'CHANGE-CORUSEL-STEP';
 function reducer(state, action) {
     switch (action.type) {
         case RIGHT_SLIDE: {
-            debugger
             return {
                 ...state,
                 clickCount: action.clickCount,
@@ -53,7 +53,6 @@ const CoruselReducer = (props) => {
         sliderElementWidth: 37,
         coruselStep: 370,
         transform: `transform .5s`,
-        windowWidth: null,
     })
     const rightSlideAC = (clickCount) => {
         dispatch({
@@ -87,28 +86,48 @@ const CoruselReducer = (props) => {
     }
 
     const amountMoveElements = useRef(10);
+    const minWidthWindow = useMediaQuery({query: '(min-width:800px)'});
 
-    let windowWidth = window.innerWidth;
     useEffect(() => {
-        debugger
-        if (windowWidth < 1000) {
-            amountMoveElements.current = 5;
-            let corusel = document.querySelector('.corusel_content');
-            corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
-            changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
-        }
-    }, [state.sliderElementWidth, windowWidth])
-    // длительность слайда в секундах,можно вынести в редюсер или еще куда(пока тут)
+        if (minWidthWindow) amountMoveElements.current = 5;
+
+        window.addEventListener('resize', (e) => {
+            let windowWidth = window.innerWidth;
+
+            if (windowWidth < 800) {
+                amountMoveElements.current = 5;
+                let corusel = document.querySelector('.corusel_content');
+                corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
+                changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
+                window.removeEventListener('resize', (e) => {})
+            }
+
+            if (windowWidth > 800) {
+                amountMoveElements.current = 10;
+                let corusel = document.querySelector('.corusel_content');
+                corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
+                changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
+                window.removeEventListener('resize', (e) => {})
+            }
+        })
+        return window.removeEventListener('resize', (e) => {})
+    }, [minWidthWindow, state.sliderElementWidth])
+
     function splittingPages() {
         return {
             common: props.pages.length / amountMoveElements.current,
             remainder: props.pages.length % amountMoveElements.current,
         }
     }
+
     function sliderMoveOption() {
-        debugger
+        const lastClick = Math.floor(splittingPages().common);
+        const lastElements = splittingPages().remainder / 2;
         // вторая проверка выясняет : сделал ли я последний клик
-        if (splittingPages().remainder !== 0 && Math.floor(splittingPages().common) + state.clickCount === 0) {
+        if (splittingPages().remainder !== 0 && lastClick + state.clickCount === 0) {
+            if(amountMoveElements.current === 5) {
+                changePositionSliderAC(state.positionSlider - (lastElements * state.sliderElementWidth))
+            }
             changePositionSliderAC(state.positionSlider - (splittingPages().remainder * state.sliderElementWidth))
         } else {
             changePositionSliderAC(state.clickCount * state.coruselStep);
@@ -119,7 +138,6 @@ const CoruselReducer = (props) => {
         e.preventDefault();
         const leftArrow = document.querySelector('.corusel_leftArrow');
         const rightArrow = document.querySelector('.corusel_rightArrow');
-        debugger
         if (e.target === leftArrow) {
             if (state.positionSlider === 0) return;
             leftSlideAC(++state.clickCount);

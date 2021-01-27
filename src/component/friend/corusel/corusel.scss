@@ -7,6 +7,11 @@
     justify-content: center;
     align-items: center;
 
+    // @media (max-width:800px) {
+    //     .corusel_content {
+    //         width: 185px;
+    //     }
+    // }
     .corusel_leftArrow{
         width: 30px;
         height: 30px;
@@ -25,6 +30,7 @@
         align-items: center;
 
         overflow: hidden;
+        
         .corusel_pages-link{
             // min-width: 1000px;
             height: 80%;
@@ -66,3 +72,4 @@
     }
 
 }
+
