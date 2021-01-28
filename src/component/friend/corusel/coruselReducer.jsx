@@ -1,4 +1,4 @@
-import React, { useReducer, useRef, useEffect } from 'react';
+import React, { useReducer, useRef, useEffect, useState, useLayoutEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import arrow from '../../../img/corusel/arrow.svg';
 import './corusel.scss';
@@ -8,7 +8,7 @@ const LEFT_SLIDE = 'LEFT-SLIDE';
 const CHANGE_AMOUNT_MOVE_ELEMENTS = 'CHANGE-AMOUNT-MOVE-ELEMENTS';
 const CHANGE_POSITION_SLIDER = 'CHANGE-POSITION-SLIDER';
 const CHANGE_CORUSEL_STEP = 'CHANGE-CORUSEL-STEP';
-
+const CHANGE_CLICK_COUNT_AT_RESIZING = 'CHANGE-CLICK-COUNT-AT-RESIZING';
 
 function reducer(state, action) {
     switch (action.type) {
@@ -30,16 +30,16 @@ function reducer(state, action) {
                 positionSlider: action.positionSlider,
             }
         }
-        case CHANGE_AMOUNT_MOVE_ELEMENTS: {
-            return {
-                ...state,
-                amountMoveElements: action.amountMoveElements,
-            }
-        }
         case CHANGE_CORUSEL_STEP: {
             return {
                 ...state,
                 coruselStep: action.coruselStep,
+            }
+        }
+        case CHANGE_CLICK_COUNT_AT_RESIZING: {
+            return {
+                ...state,
+                clickCount: action.clickCount,
             }
         }
         default: return state;
@@ -72,46 +72,42 @@ const CoruselReducer = (props) => {
             positionSlider
         })
     }
-    const changeAmountMoveElementsAC = (amountMoveElements) => {
-        dispatch({
-            type: CHANGE_AMOUNT_MOVE_ELEMENTS,
-            amountMoveElements,
-        })
-    }
     const changeCoruselStepAC = (coruselStep) => {
         dispatch({
             type: CHANGE_CORUSEL_STEP,
             coruselStep,
         })
     }
+    const changeClickCountAtResizing = (clickCount) => {
+        dispatch({
+            type: CHANGE_CLICK_COUNT_AT_RESIZING,
+            clickCount
+        })
+    }
 
     const amountMoveElements = useRef(10);
-    const minWidthWindow = useMediaQuery({query: '(min-width:800px)'});
-
+    const maxWidthWindow = useMediaQuery({query: '(max-width:800px)'});
+    
     useEffect(() => {
-        if (minWidthWindow) amountMoveElements.current = 5;
-
-        window.addEventListener('resize', (e) => {
-            let windowWidth = window.innerWidth;
-
-            if (windowWidth < 800) {
-                amountMoveElements.current = 5;
-                let corusel = document.querySelector('.corusel_content');
-                corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
-                changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
-                window.removeEventListener('resize', (e) => {})
-            }
-
-            if (windowWidth > 800) {
-                amountMoveElements.current = 10;
-                let corusel = document.querySelector('.corusel_content');
-                corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
-                changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
-                window.removeEventListener('resize', (e) => {})
-            }
-        })
-        return window.removeEventListener('resize', (e) => {})
-    }, [minWidthWindow, state.sliderElementWidth])
+        if (maxWidthWindow) {
+            console.log('resize--')
+            amountMoveElements.current = 5;
+            let corusel = document.querySelector('.corusel_content');
+            changeClickCountAtResizing(state.clickCount * 2)
+            corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
+            changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
+// если слайдер ресайзить с небольшого,со страницы заканчивающейся на 10,20,30 и тд. то крупный размер слайдера будет заканчиваться на 15,25,35 - этого не нужно
+        } else {
+            console.log('resize++')
+            amountMoveElements.current = 10;
+            let corusel = document.querySelector('.corusel_content');
+            // исправлять тут,так как если сделано было 3 клика,то 3 делим на 2 и получаем не целое
+            changeClickCountAtResizing(state.clickCount / 2)
+            corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
+            changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
+        }
+        
+    }, [maxWidthWindow, state.sliderElementWidth])
 
     function splittingPages() {
         return {
@@ -125,7 +121,7 @@ const CoruselReducer = (props) => {
         const lastElements = splittingPages().remainder / 2;
         // вторая проверка выясняет : сделал ли я последний клик
         if (splittingPages().remainder !== 0 && lastClick + state.clickCount === 0) {
-            if(amountMoveElements.current === 5) {
+            if (amountMoveElements.current === 5) {
                 changePositionSliderAC(state.positionSlider - (lastElements * state.sliderElementWidth))
             }
             changePositionSliderAC(state.positionSlider - (splittingPages().remainder * state.sliderElementWidth))
