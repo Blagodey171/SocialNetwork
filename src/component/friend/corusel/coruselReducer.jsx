@@ -86,29 +86,28 @@ const CoruselReducer = (props) => {
     }
 
     const amountMoveElements = useRef(10);
-    const maxWidthWindow = useMediaQuery({query: '(max-width:800px)'});
-    
+    const maxWidthWindow = useMediaQuery({ query: '(max-width:800px)' });
+
     useEffect(() => {
         if (maxWidthWindow) {
-            console.log('resize--')
             amountMoveElements.current = 5;
             let corusel = document.querySelector('.corusel_content');
             changeClickCountAtResizing(state.clickCount * 2)
             corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
             changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
-// если слайдер ресайзить с небольшого,со страницы заканчивающейся на 10,20,30 и тд. то крупный размер слайдера будет заканчиваться на 15,25,35 - этого не нужно
         } else {
-            console.log('resize++')
             amountMoveElements.current = 10;
             let corusel = document.querySelector('.corusel_content');
-            // исправлять тут,так как если сделано было 3 клика,то 3 делим на 2 и получаем не целое
-            changeClickCountAtResizing(state.clickCount / 2)
+
+            changeClickCountAtResizing(Math.ceil(state.clickCount / 2));
             corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
             changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
         }
-        
-    }, [maxWidthWindow, state.sliderElementWidth])
 
+    }, [maxWidthWindow, state.sliderElementWidth])
+    useEffect(() => {
+        changePositionSliderAC(state.clickCount * state.coruselStep);
+    }, [state.coruselStep])
     function splittingPages() {
         return {
             common: props.pages.length / amountMoveElements.current,
