@@ -1,5 +1,6 @@
 .corusel {
-    width: 500px;
+    max-width: 500px;
+    width: 55vw;
     height: 40px;
 
     display: flex;
@@ -7,11 +8,6 @@
     justify-content: center;
     align-items: center;
 
-    // @media (max-width:800px) {
-    //     .corusel_content {
-    //         width: 185px;
-    //     }
-    // }
     .corusel_leftArrow{
         width: 30px;
         height: 30px;
@@ -23,7 +19,7 @@
         height: 30px;
     }
     .corusel_content{
-        width: 370px;
+        max-width: 370px;
         height: 100%;
 
         display: flex;
@@ -70,6 +66,10 @@
 
         cursor: pointer;
     }
-
+    @media (max-width:800px) {
+        .corusel_content {
+            max-width: 185px;
+        }
+    }
 }
 

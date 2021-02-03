@@ -1,39 +1,94 @@
-.container {
-    padding: 10px;
-    .loadGif {
-        width: 150px;
-        height: 150px;
-    }
-    .container-pages {
-        overflow-y: scroll;
-        background-color: rgb(194, 194, 194);
-
-        width: 150px;
-        height: 500px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-    }
+$bgColorUserCardsContainer: rgb(245, 245, 245);
+$neitralColorGray: rgb(209, 209, 209);
+.container-friends {
+    margin: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
     .container-user-card {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
 
-        width: 300px;
-        height: 700px;
-        overflow-y: scroll;
+        max-width: 500px;
+        min-width: 180px;
+        width: 30vw;
+        min-height: 200px;
 
-        background-color: rgb(194, 194, 194);
+        border-radius: 10px;
+        background-color: $bgColorUserCardsContainer;
 
         .user-card {
-            margin: 20px;
+            width: 25vw;
+            min-width: 160px;
+            max-width: 400px;
+
+            height: 100px;
+            margin: 10px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: solid 1px rgba(194, 194, 194, 0.815);
+            border-top: solid 1px rgba(194, 194, 194, 0.815);
+
+            .user-card__avatar {
+                width: 8vw;
+                max-width: 60px;
+                min-width: 48px;
+                min-height: 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                a{
+                    width: 100%;
+                    height: 100%;
+                    .user-card__avatar-photo{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                
+                .user-card__follow{
+                    min-width: 60px;
+                    width: 80%;
+                    font-size: 12px;
+                    background-color: none;
+                    border-radius: 3px;
+                    border: solid 1px $neitralColorGray;
+                }
+            }
+            .user-card__info{
+                width: 15vw;
+                min-width: 90px;
+                height: 40px;
+                border-left: solid 1px $neitralColorGray;
+                border-right: solid 1px $neitralColorGray;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .user-card__name{
+
+                }
+                .user-card__navigation{
+
+                }
+            }
         }
     }
+@media (max-width: 770px ) {
+    .user-card__follow {
+        display: none;
+    }
+}
 
     
 }

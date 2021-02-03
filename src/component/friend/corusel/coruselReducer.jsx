@@ -1,4 +1,5 @@
-import React, { useReducer, useRef, useEffect, useState, useLayoutEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useReducer, useRef, useEffect, useState, useLayoutEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import arrow from '../../../img/corusel/arrow.svg';
 import './corusel.scss';
@@ -85,29 +86,24 @@ const CoruselReducer = (props) => {
         })
     }
 
+    const leftArrow = document.querySelector('.corusel_leftArrow');
+    const rightArrow = document.querySelector('.corusel_rightArrow');
+
     const amountMoveElements = useRef(10);
     const maxWidthWindow = useMediaQuery({ query: '(max-width:800px)' });
 
     useEffect(() => {
-        if (maxWidthWindow) {
-            amountMoveElements.current = 5;
-            let corusel = document.querySelector('.corusel_content');
-            changeClickCountAtResizing(state.clickCount * 2)
-            corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
-            changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
-        } else {
-            amountMoveElements.current = 10;
-            let corusel = document.querySelector('.corusel_content');
+        maxWidthWindow ? amountMoveElements.current = 5 : amountMoveElements.current = 10;
+        maxWidthWindow ? changeClickCountAtResizing(state.clickCount * 2) : changeClickCountAtResizing(Math.ceil(state.clickCount / 2))
+        changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
+    }, [maxWidthWindow, state.sliderElementWidth]);
 
-            changeClickCountAtResizing(Math.ceil(state.clickCount / 2));
-            corusel.style.width = `${amountMoveElements.current * state.sliderElementWidth}px`;
-            changeCoruselStepAC(amountMoveElements.current * state.sliderElementWidth);
-        }
 
-    }, [maxWidthWindow, state.sliderElementWidth])
     useEffect(() => {
         changePositionSliderAC(state.clickCount * state.coruselStep);
-    }, [state.coruselStep])
+    }, [state.coruselStep]);
+
+
     function splittingPages() {
         return {
             common: props.pages.length / amountMoveElements.current,
@@ -131,8 +127,6 @@ const CoruselReducer = (props) => {
 
     function clickHandler(e) {
         e.preventDefault();
-        const leftArrow = document.querySelector('.corusel_leftArrow');
-        const rightArrow = document.querySelector('.corusel_rightArrow');
         if (e.target === leftArrow) {
             if (state.positionSlider === 0) return;
             leftSlideAC(++state.clickCount);
@@ -153,7 +147,7 @@ const CoruselReducer = (props) => {
                 <img className='corusel_leftArrow' onClick={clickHandler} src={arrow} alt="left" />
             </div>
             <div className="corusel_content">
-                <div className='corusel_pages-link' style={{ transition: state.transform, transform: `translateX(${state.positionSlider}px)` }}>
+                <div className='corusel_pages-link' style={{ transition: state.transform, transform: `translateX(${state.positionSlider}px)`}}>
                     {props.pages}
                 </div>
             </div>

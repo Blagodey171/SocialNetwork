@@ -21,7 +21,7 @@ class FriendsClassComponent extends React.Component {
 
         for(let i = 1; i <= totalPages; i++) arrPages.push(i);
 
-        return arrPages.map(el => <span onClick={() => {this.setPage(el)}}   className={`page-number-container`} ><span id={el} className={`pageNumber ${this.props.currentPage === el && 'selected'}`}>{el}</span></span>);
+        return arrPages.map(el => <span onClick={() => {this.setPage(el)}} className={`page-number-container`} ><span id={el} className={`pageNumber ${this.props.currentPage === el && 'selected'}`}>{el}</span></span>);
     }
 
     render() {
@@ -34,7 +34,6 @@ class FriendsClassComponent extends React.Component {
 let mapStateToProps = (state) => {
     return {
         ...state.friendsReducer,
-        corusel: {...state.coruselReducer}
     }
 }
 
