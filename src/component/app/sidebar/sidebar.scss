@@ -1,0 +1,69 @@
+$sidebarFontFamily : 'Ubuntu', sans-serif;
+$sidebarFontSize : 12px;
+$sidebarLetterSpacing : 1px;
+$sidebarBg: #463A3E;
+$sidebarLinkColor: #453A3E;
+$sidebarLinkColorClick: #D1B995;
+$sidebarLinkColorHover: rgb(54, 45, 48);
+
+.container-sidebar {
+    max-width: 200px;
+    min-height: 300px;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    // background-color: $sidebarBg;
+
+    opacity: .8;
+    transition: .1s;
+
+    .container-link {
+        background-color: none;
+        width: 170px;
+        height: 25px;
+        margin: 3px 0 3px 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 3px;
+    }
+    .container-link:first-child {
+        margin-top: 6px;
+    }
+    .container-link:hover {
+        background-color: $sidebarLinkColorHover;
+        
+        cursor: pointer;
+    }
+
+    a {
+        height: 20px;
+        width: 100%;
+        text-align: center;
+        
+        padding-top: 5px;
+        color: $sidebarLinkColor;
+        text-decoration: none;
+        font-family: $sidebarFontFamily;
+        font-weight: 500;
+        letter-spacing: $sidebarLetterSpacing;
+        font-size: $sidebarFontSize;
+    }
+
+    a:hover {
+        color: $sidebarLinkColorClick;
+    }
+
+
+    .click {
+        background-color: $sidebarLinkColorHover;
+        color: $sidebarLinkColorClick;
+        border-radius: 3px;
+    }
+}
+
