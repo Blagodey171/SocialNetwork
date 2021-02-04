@@ -15,14 +15,17 @@ class FriendsClassComponent extends React.Component {
         this.props.setPageThunkCreator(page, this.props.sizePage);
     }
 
+
     pages = () => {
         let totalPages = Math.ceil(this.props.totalUsersCount / this.props.sizePage);
         let arrPages = [];
 
         for(let i = 1; i <= totalPages; i++) arrPages.push(i);
 
-        return arrPages.map(el => <span onClick={() => {this.setPage(el)}} className={`page-number-container`} ><span id={el} className={`pageNumber ${this.props.currentPage === el && 'selected'}`}>{el}</span></span>);
+        return arrPages.map(el => <span  onClick={(e) => {this.setPage(el)}} className={`page-number-container ${this.props.currentPage === el && 'selected'}`} ><span id={el} className={`pageNumber `}>{el}</span></span>);
     }
+
+    
 
     render() {
         return <Friends {...this.props} corusel={this.props.corusel} pages={this.pages()} isFetching={this.props.isFetching} />

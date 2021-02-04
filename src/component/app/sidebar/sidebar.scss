@@ -65,5 +65,11 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
         color: $sidebarLinkColorClick;
         border-radius: 3px;
     }
+    
+}
+@media (max-width: 500px) {
+    .container-sidebar{
+        display: none;
+    }
 }
 

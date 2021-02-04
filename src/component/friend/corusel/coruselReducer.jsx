@@ -51,8 +51,8 @@ const CoruselReducer = (props) => {
     const [state, dispatch] = useReducer(reducer, {
         clickCount: 0,
         positionSlider: 0,
-        sliderElementWidth: 37,
-        coruselStep: 370,
+        sliderElementWidth: 26,
+        coruselStep: 260,
         transform: `transform .5s`,
     })
     const rightSlideAC = (clickCount) => {
@@ -90,7 +90,7 @@ const CoruselReducer = (props) => {
     const rightArrow = document.querySelector('.corusel_rightArrow');
 
     const amountMoveElements = useRef(10);
-    const maxWidthWindow = useMediaQuery({ query: '(max-width:800px)' });
+    const maxWidthWindow = useMediaQuery({ query: '(max-width:700px)' });
 
     useEffect(() => {
         maxWidthWindow ? amountMoveElements.current = 5 : amountMoveElements.current = 10;
@@ -102,7 +102,6 @@ const CoruselReducer = (props) => {
     useEffect(() => {
         changePositionSliderAC(state.clickCount * state.coruselStep);
     }, [state.coruselStep]);
-
 
     function splittingPages() {
         return {
@@ -144,7 +143,7 @@ const CoruselReducer = (props) => {
     return (
         <div className='corusel'>
             <div className="corusel_arrow" >
-                <img className='corusel_leftArrow' onClick={clickHandler} src={arrow} alt="left" />
+                <img className='corusel_leftArrow arrow' onClick={clickHandler} src={arrow} alt="left" />
             </div>
             <div className="corusel_content">
                 <div className='corusel_pages-link' style={{ transition: state.transform, transform: `translateX(${state.positionSlider}px)`}}>
@@ -152,7 +151,7 @@ const CoruselReducer = (props) => {
                 </div>
             </div>
             <div className="corusel_arrow" >
-                <img className='corusel_rightArrow' onClick={clickHandler} src={arrow} alt="right" />
+                <img className='corusel_rightArrow arrow' onClick={clickHandler} src={arrow} alt="right" />
             </div>
         </div>
     )

@@ -1,0 +1,46 @@
+.burgerMenu-container {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .baseLine {
+        width: 18px;
+        height: 1px;
+        background-color: black;
+    }
+
+    .baseLine::before,
+    .baseLine::after {
+        position: absolute;
+        width: 18px;
+        height: 1px;
+        content: '';
+        background-color: black;
+        transition: transform .2s;
+    }
+
+    .baseLine::before {
+        transform: translateY(-5px);
+    }
+    .baseLine::after {
+        transform: translateY(5px);
+    }
+
+    
+}
+.burgerMenu-active .baseLine::before {
+    transform: rotate(45deg);
+}
+.burgerMenu-active .baseLine::after {
+    transform: rotate(-45deg);
+}
+.burgerMenu-active .baseLine {
+    height: 0px;
+}
+
+
