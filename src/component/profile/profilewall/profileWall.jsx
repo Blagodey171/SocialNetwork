@@ -1,12 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-const ProfileWall = (props) => {
+const ProfileWall = React.memo((props) => {
     const { register, handleSubmit, errors } = useForm();
     
     let onSubmit = (value) => {props.addPostAC(value.postText)}
     let inputMaxLength = 5;
-
     return (
         <div className='profile-wall__posts' >
             <div className='profile-wall__create-post' >
@@ -22,6 +21,6 @@ const ProfileWall = (props) => {
             </div>
         </div>
     )
-}
+})
 
 export default ProfileWall;

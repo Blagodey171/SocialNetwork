@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import Post from '../component/profile/post';
+import Post from '../../component/profile/post';
 
 export const getAuthId = (state) => {
         return state.authReducer.id;
@@ -7,6 +7,9 @@ export const getAuthId = (state) => {
 
 export const getAuthStatus = (state) => {
     return state.authReducer.isAuth;
+};
+export const getProfileStatus = (state) => {
+    return state.profileReducer.status;
 };
 
 

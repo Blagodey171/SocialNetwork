@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator, setPortionSize} from '../../redux/friendsReducer';
+import { unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator, } from '../../redux/friendsReducer';
+import { getTotalUsersCount, getUsers, getSizePage, getCurrentPage } from '../../redux/selectors/selectorsUsers';
 import Friends from './friends';
 import { compose } from 'redux';
 
@@ -28,7 +29,7 @@ class FriendsClassComponent extends React.Component {
     
 
     render() {
-        return <Friends {...this.props} pages={this.pages()} isFetching={this.props.isFetching} />
+        return <Friends users={this.props.users} disabledButtonFollow={this.props.disabledButtonFollow} pages={this.pages()} isFetching={this.props.isFetching} />
     }
 }
 
@@ -36,7 +37,12 @@ class FriendsClassComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        ...state.friendsReducer,
+        users: getUsers(state),
+        totalUsersCount: getTotalUsersCount(state),
+        sizePage: getSizePage(state),
+        currentPage: getCurrentPage(state),
+        isFetching: state.friendsReducer.isFetching,
+        disabledButtonFollow: state.friendsReducer.disabledButtonFollow,
     }
 }
 
@@ -46,7 +52,6 @@ export default compose(
         followThunkCreator,
         getUsersThunkCreator,
         setPageThunkCreator,
-        setPortionSize,
     }),
 )(FriendsClassComponent)
 

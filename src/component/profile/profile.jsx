@@ -7,11 +7,11 @@ import ProfileWall from './profilewall/profileWall';
 let profile = (props) => {
     return (
         <div className='profile'>
-            <ContainerProfilePersonData {...props} />
+            <ContainerProfilePersonData putProfileStatusThunkCreator={props.putProfileStatusThunkCreator} profile={props.profile} status={props.status} />
             
             <div className='profile-wall' >
-                <ProfileContent {...props} />
-                <ProfileWall {...props} />
+                <ProfileContent  />
+                <ProfileWall addPostAC={props.addPostAC} posts={props.posts}/>
             </div>
         </div>
     )

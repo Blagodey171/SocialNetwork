@@ -76,7 +76,6 @@ export const setProfileThunkCreator = (userId) => {
         } else {
             auth().then(data => {
                 setProfile(data.data.id).then(data => {
-                    console.log(data)
                     dispatch(setProfileAC(data));
                 })
             })

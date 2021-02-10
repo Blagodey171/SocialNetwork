@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 
-let СontainerProfilePersonData = (props) => {
+let СontainerProfilePersonData = React.memo((props) => {
     let [mode, setMode] = useState(false);
 
     const { handleSubmit, errors, register} = useForm({});
@@ -15,8 +15,7 @@ let СontainerProfilePersonData = (props) => {
         activateMode()
         props.putProfileStatusThunkCreator(value.statusInput)
     }
-
-    
+        console.log('render')
         return (
             <div className='profile-info' >
                     <div className='profile-info__avatar' >
@@ -59,7 +58,7 @@ let СontainerProfilePersonData = (props) => {
                 </div>
         )
         
-    }
+    })
 
 
 export default СontainerProfilePersonData
