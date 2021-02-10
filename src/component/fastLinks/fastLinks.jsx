@@ -7,15 +7,15 @@ import BurgerMenu from './burgerMenu';
 
 let fastLinks = (props) => {
     return (
-        <div className='containerFastLinks'>
+        <div className='container-fast-links'>
             <BurgerMenu/>
             {
                 props.isAuth
-                    ? <div>
-                        <p>{props.login}</p>
-                        <button onClick={props.logoutThunkCreator} >Logout</button>
+                    ? <div className='user-name-container'>
+                        <p className='user-name'>{props.login}</p>
+                        <button className='logout-button' onClick={props.logoutThunkCreator} >Выход</button>
                     </div>
-                    : <NavLink to='/login'>Login</NavLink>
+                    : <button className='login-button'><NavLink className='login-link' to='/login'>Вход</NavLink></button>
             }
 
         </div>

@@ -4,12 +4,13 @@ import Avatar from '../../img/avatar/cat.png'
 import { NavLink } from 'react-router-dom';
 import Preloader from '../preloader/preloader';
 // import CoruselContainer from './corusel/coruselContainer.jsx';
-import CoruselReducerr from './corusel/coruselReducer.jsx';
+import CoruselReducer from './corusel/coruselReducercopy.jsx';
 // corusel={props.corusel}
 let friends = (props) => {
+    // console.log(props.pages)
     return (
         <div className='container-friends'>
-                <CoruselReducerr pages={props.pages}  />
+                <CoruselReducer pages={props.pages} portionsSize={props.portionsSize} setPortionSize={props.setPortionSize}  />
             <div className='container-user-card' >
                 {
                     props.isFetching ? <Preloader/>

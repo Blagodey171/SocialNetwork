@@ -51,8 +51,8 @@ const CoruselReducer = (props) => {
     const [state, dispatch] = useReducer(reducer, {
         clickCount: 0,
         positionSlider: 0,
-        sliderElementWidth: 26,
-        coruselStep: 260,
+        sliderElementWidth: 39,
+        coruselStep: 390,
         transform: `transform .5s`,
     })
     const rightSlideAC = (clickCount) => {

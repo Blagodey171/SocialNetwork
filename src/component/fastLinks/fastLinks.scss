@@ -2,17 +2,72 @@
     $navbarLinksSize : 20px;
     $navbarLinkLetterSpacing : 1px;
 
-.containerFastLinks {
+.container-fast-links {
     width: 100vw;
     max-width: 100%;
     height: 35px;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
     
-    background-color: #463A3E;
+    background-color: #e7e7fd;
 
     opacity: .8;
+
+    box-shadow: 0 0 4px 0 inset black;
     
+    .user-name-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 120px;
+        height: 80%;
+        margin-right: 10px;
+        .user-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            letter-spacing: 1px;
+            cursor: default;
+        }
+
+        .logout-button {
+
+        }
+        .logout-button:hover {
+            color: rgb(255, 0, 0);
+            background-color: rgb(255, 255, 255);
+            border: 1px black solid;
+        }
+    }
+     
+    button {
+        min-width: 45px;
+        height: 60%;
+        border-radius: 5px;
+        font-size: 12px;
+        background-color: #362d30;
+        opacity: .9;
+        color: rgb(255, 255, 255);
+        transition: .2s;
+        letter-spacing: 0.5px;
+    }
+    .login-button {
+        margin-right: 10px;
+        .login-link {
+            width: 100vw;
+            height: 100%;
+        }
+    }
+    .login-button:hover .login-link{
+        color: #D1B995;
+    }
+    
+}
+@media (max-width: 500px) {
+    .container-fast-links {
+        justify-content: space-between;
+    }
 }

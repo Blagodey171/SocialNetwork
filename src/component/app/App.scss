@@ -17,12 +17,21 @@
             .content-main {
                 width: 100%;
                 min-height: 1500px;
-                background-color: rgb(231, 231, 253);
-    
-                border: 3px rgb(29, 25, 25) solid;
+                border-left: 1.5px rgb(255, 255, 255) solid;
+                border-right: 1.5px rgb(255, 255, 255) solid;
+                border-bottom: 1.5px rgb(255, 255, 255) solid;
+                border-radius: 5px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            }
+            .overlay {
+                position: absolute;
+                background-color: #fff;
+                z-index: 500;
+                width: 100vw;
+                height: 100vh;
+                opacity: .5;
             }
         }
         

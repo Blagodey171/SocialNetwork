@@ -7,7 +7,7 @@ $sidebarLinkColorClick: #D1B995;
 $sidebarLinkColorHover: rgb(54, 45, 48);
 
 .container-sidebar {
-    max-width: 200px;
+    max-width: 170px;
     min-height: 300px;
     max-height: 600px;
     display: flex;
@@ -15,11 +15,8 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
     justify-content: flex-start;
     align-items: center;
 
-    // background-color: $sidebarBg;
-
     opacity: .8;
-    transition: .1s;
-
+    
     .container-link {
         background-color: none;
         width: 170px;
@@ -50,7 +47,7 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
         color: $sidebarLinkColor;
         text-decoration: none;
         font-family: $sidebarFontFamily;
-        font-weight: 500;
+        font-weight: bold;
         letter-spacing: $sidebarLetterSpacing;
         font-size: $sidebarFontSize;
     }
@@ -68,8 +65,22 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
     
 }
 @media (max-width: 500px) {
-    .container-sidebar{
-        display: none;
+    .container-sidebar {
+        transform: translate(-300px, -150px) skewX(35deg);
+        width: 0px;
     }
+}
+.activeBurgerMenu {
+    transform: translate(0px, 0px);
+    position: absolute;
+    top: 85px;
+    left: 10px;
+    width: 170px;
+    opacity: 1;
+    background-color: #e7e7fd;
+    border-radius: 10px;
+    z-index: 1000;
+    transition: 1s;
+
 }
 

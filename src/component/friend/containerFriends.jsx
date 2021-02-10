@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator} from '../../redux/friendsReducer';
+import { unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator, setPortionSize} from '../../redux/friendsReducer';
 import Friends from './friends';
 import { compose } from 'redux';
 
@@ -28,7 +28,7 @@ class FriendsClassComponent extends React.Component {
     
 
     render() {
-        return <Friends {...this.props} corusel={this.props.corusel} pages={this.pages()} isFetching={this.props.isFetching} />
+        return <Friends {...this.props} pages={this.pages()} isFetching={this.props.isFetching} />
     }
 }
 
@@ -46,6 +46,7 @@ export default compose(
         followThunkCreator,
         getUsersThunkCreator,
         setPageThunkCreator,
+        setPortionSize,
     }),
 )(FriendsClassComponent)
 

@@ -7,6 +7,7 @@ const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_ISFETCHING = 'SET-ISFETCHING';
 const SET_DISABLE_BUTTON_FOLLOW = 'SET-DISABLE-BUTTON-FOLLOW';
+const SET_PORTION_SIZE = 'SET-PORTION-SIZE';
 
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
     totalUsersCount: 0,
     sizePage: 33,
     currentPage: 1,
+    portionsSize: 10,
     isFetching: false,
     disabledButtonFollow: [],
 };
@@ -58,6 +60,11 @@ let friendsReducer = (state = initialState, action) => {
                     ? [...state.disabledButtonFollow, action.userId]
                     : state.disabledButtonFollow.filter(userId => userId !== action.userId)
             }
+        case SET_PORTION_SIZE:
+            return {
+                ...state,
+                portionsSize: action.value
+            }
         default:
             return state;
     }
@@ -97,6 +104,12 @@ export const setDisabledButtonFollowAC = (value, userId) => {
         type: SET_DISABLE_BUTTON_FOLLOW,
         disabled: value,
         userId,
+    }
+}
+export const setPortionSize = (value) => {
+    return {
+        type: SET_PORTION_SIZE,
+        value,
     }
 }
 
