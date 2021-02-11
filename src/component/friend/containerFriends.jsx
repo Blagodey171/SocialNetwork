@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { unfollowThunkCreator, followThunkCreator, getUsersThunkCreator, setPageThunkCreator, } from '../../redux/friendsReducer';
-import { getTotalUsersCount, getUsers, getSizePage, getCurrentPage } from '../../redux/selectors/selectorsUsers';
+import { getTotalUsersCount, getUsersCards, getSizePage, getCurrentPage } from '../../redux/selectors/selectorsUsers';
 import Friends from './friends';
 import { compose } from 'redux';
 
@@ -29,7 +29,8 @@ class FriendsClassComponent extends React.Component {
     
 
     render() {
-        return <Friends users={this.props.users} disabledButtonFollow={this.props.disabledButtonFollow} pages={this.pages()} isFetching={this.props.isFetching} />
+        return <Friends users={this.props.users} disabledButtonFollow={this.props.disabledButtonFollow} pages={this.pages()} isFetching={this.props.isFetching} followThunkCreator={this.props.followThunkCreator} unfollowThunkCreator={this.props.unfollowThunkCreator}
+        />
     }
 }
 
@@ -37,7 +38,7 @@ class FriendsClassComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: getUsers(state),
+        users: getUsersCards(state),
         totalUsersCount: getTotalUsersCount(state),
         sizePage: getSizePage(state),
         currentPage: getCurrentPage(state),

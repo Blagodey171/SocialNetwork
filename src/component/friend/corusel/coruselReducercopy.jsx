@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useReducer, useRef, useEffect, useState, useLayoutEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useState} from 'react';
 import { useMediaQuery } from 'react-responsive';
 import arrow from '../../../img/corusel/arrow.svg';
 import './corusel.scss';

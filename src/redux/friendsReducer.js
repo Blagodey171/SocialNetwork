@@ -100,48 +100,45 @@ export const setDisabledButtonFollowAC = (value, userId) => {
 }
 
 export const unfollowThunkCreator = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setDisabledButtonFollowAC(true, userId))
-        unfollow(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(subscribeAC(userId))
-            }
-            dispatch(setDisabledButtonFollowAC(false, userId))
-        })
+        let setUnfollow = await unfollow(userId);
+        if (setUnfollow.resultCode === 0) {
+            dispatch(subscribeAC(userId))
+        }
+        dispatch(setDisabledButtonFollowAC(false, userId))
+        
     }
 }
 
 export const followThunkCreator = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setDisabledButtonFollowAC(true, userId))
-        follow(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(subscribeAC(userId))
-            }
-            dispatch(setDisabledButtonFollowAC(false, userId))
-        })
+        let setFollow = await follow(userId);
+        if (setFollow.resultCode === 0) {
+            dispatch(subscribeAC(userId))
+        }
+        dispatch(setDisabledButtonFollowAC(false, userId))
     }
 }
 
 export const getUsersThunkCreator = (currentPage, sizePage) => {
-    return (dispatch) => {
-        dispatch(setValueIsFetchingAC())
-        getUsers(currentPage, sizePage).then(data => {
-            dispatch(setValueIsFetchingAC());
-            dispatch(setUsersAC(data.items));
-            dispatch(setTotalUsersCountAC(data.totalCount));
-        })
+    return async (dispatch) => {
+        dispatch(setValueIsFetchingAC());
+        let getUsersResponse = await getUsers(currentPage, sizePage);
+        dispatch(setValueIsFetchingAC());
+        dispatch(setUsersAC(getUsersResponse.items));
+        dispatch(setTotalUsersCountAC(getUsersResponse.totalCount));
     }
 }
 
 export const setPageThunkCreator = (page, sizePage) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setCurrentPageAC(page));
         dispatch(setValueIsFetchingAC());
-        getUsers(page, sizePage).then(data => {
-            dispatch(setValueIsFetchingAC());
-            dispatch(setUsersAC(data.items));
-        })
+        let setPage = await getUsers(page, sizePage);
+        dispatch(setValueIsFetchingAC());
+        dispatch(setUsersAC(setPage.items));
     }
 }
 

@@ -8,17 +8,18 @@ const instance = axios.create({
     }
 });
 
-export const getUsers = (currentPage, sizePage) => {
-    return instance.get(`users?page=${currentPage}&count=${sizePage}`)
-        .then(response => response.data)
+export const getUsers = async (currentPage, sizePage) => {
+    let getUsers = await instance.get(`users?page=${currentPage}&count=${sizePage}`)
+    return await getUsers.data
 }
 
-export const follow = (id) => {
-    return instance.post(`follow/${id}`)
-        .then(response => response.data)
+export const follow = async (id) => {
+    let follow = await instance.post(`follow/${id}`);
+    return await follow.data;
+    
 }
 
-export const unfollow = (id) => {
-    return instance.delete(`follow/${id}`)
-        .then(response => response.data)
+export const unfollow = async (id) => {
+    let unfollow = await instance.delete(`follow/${id}`)
+    return await unfollow.data
 }
