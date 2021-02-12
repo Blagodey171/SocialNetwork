@@ -6,30 +6,35 @@ import Preloader from '../preloader/preloader';
 import CoruselReducer from './corusel/coruselReducercopy.jsx';
 import { useEffect } from 'react';
 
-let Friends = (props) => {
-    console.log(props)
-    useEffect(() => {
-        const unfollowButton = document.querySelector('.unfollow');
-        const followButton = document.querySelector('.follow');
-        console.log(unfollowButton)
-        if(unfollowButton) {
-            unfollowButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                // console.log(e.target.id)
-                props.unfollowThunkCreator(e.target.id)
-            })
-        }
-        
-    })
-
-
+let friends = (props) => {
     return (
         <div className='container-friends'>
                 <CoruselReducer pages={props.pages}/>
             <div className='container-user-card' >
                 {
                     props.isFetching ? <Preloader/>
-                    : props.users
+                    : props.users.map(user =>
+                        <div className='user-card' >
+                            <div className='user-card__avatar'>
+                                <NavLink to={`profile/${user.id}`}>
+                                    <img src={user.photos.small || Avatar} alt="" className='user-card__avatar-photo'/>
+                                </NavLink>
+                                {
+                                    user.followed
+                                    ? <button id={user.id} onClick={() => props.unfollowThunkCreator(user.id)} disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} className='user-card__follow unfollow'>Отписка</button> 
+                                    : <button id={user.id} onClick={() => props.followThunkCreator(user.id)} disabled = {props.disabledButtonFollow.some(userId => userId === user.id)} className='user-card__follow follow'>Подписка</button>
+                                }
+                            </div>
+                            <div className='user-card__info' >
+                                <div className='user-card__name'>
+                                    {user.name}
+                                </div>
+                                <div className='user-card__navigation'>
+                                    {user.navigation || 'Russia'}
+                                </div>
+                            </div>
+                        </div>
+                    )
                     
                 }
             </div>
@@ -38,4 +43,4 @@ let Friends = (props) => {
 
 }
 
-export default Friends;
+export default friends;

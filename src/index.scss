@@ -12,7 +12,11 @@ button {
   outline: none;
   cursor: pointer;
 }
-
+:root {
+  --base-backgroundcolor-app: rgb(253, 222, 201);
+  --base-backgroundcolor-header: rgba(191, 105, 48, 0.842);
+  --base-backgroundcolor-fastlinks: #e7e7ff8a;
+}
 body {
   background-color: rgb(231, 231, 253);
   padding: 0;
