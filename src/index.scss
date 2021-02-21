@@ -13,12 +13,31 @@ button {
   cursor: pointer;
 }
 :root {
-  --base-backgroundcolor-app: rgb(253, 222, 201);
-  --base-backgroundcolor-header: rgba(191, 105, 48, 0.842);
-  --base-backgroundcolor-fastlinks: #e7e7ff8a;
+  // app-component
+  --base-backgroundcolor-app: rgb(231, 231, 253);
+  --base-backgroundcolor-two-column: rgb(255, 255, 255);
+  // header-component
+  --base-backgroundcolor-header: rgba(0, 172, 89, 0.534);
+  // fast-links-component
+  --base-backgroundcolor-fastlinks: rgb(241, 227, 215);
+  --backgroundcolor-button-exit: rgb(241, 227, 215);
+  // friend-component
+  --background-color-friend:  rgb(247, 247, 247);
+  --background-color-buttonfollow-hover: rgb(225, 226, 255);
+  --background-color-buttonunfollow-hover: rgb(225, 226, 255);
+  --corusel-boxshadow-color: rgb(255, 223, 183);
+  // common
+  --base-backgroundcolor-buttons: rgb(196, 199, 255);
+  --base-links-color: rgb(25, 27, 73);
+  
+  // sidebar-component
+  --sidebar-fontFamily: 'Ubuntu', sans-serif;
+  --sidebar-letterSpacing: 1px;
+  --sidebar-font-size: 12px;
+  --sidebar-background-color: rgb(213, 215, 255);
 }
 body {
-  background-color: rgb(231, 231, 253);
+  background-color: var(--base-backgroundcolor-app);
   padding: 0;
   margin: 0;
   box-sizing: border-box;

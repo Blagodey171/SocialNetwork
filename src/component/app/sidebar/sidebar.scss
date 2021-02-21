@@ -1,10 +1,5 @@
-$sidebarFontFamily : 'Ubuntu', sans-serif;
 $sidebarFontSize : 12px;
 $sidebarLetterSpacing : 1px;
-$sidebarBg: #463A3E;
-$sidebarLinkColor: #453A3E;
-$sidebarLinkColorClick: #D1B995;
-$sidebarLinkColorHover: rgb(54, 45, 48);
 
 .container-sidebar {
     max-width: 170px;
@@ -16,7 +11,6 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
     align-items: center;
 
     opacity: .8;
-    
     .container-link {
         background-color: none;
         width: 170px;
@@ -33,7 +27,7 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
         margin-top: 6px;
     }
     .container-link:hover {
-        background-color: $sidebarLinkColorHover;
+        background-color: var(--base-backgroundcolor-buttons);
         
         cursor: pointer;
     }
@@ -44,22 +38,20 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
         text-align: center;
         
         padding-top: 5px;
-        color: $sidebarLinkColor;
+        color: var(--base-links-color);
         text-decoration: none;
-        font-family: $sidebarFontFamily;
+        font-family: var(--sidebar-fontFamily);
         font-weight: bold;
-        letter-spacing: $sidebarLetterSpacing;
-        font-size: $sidebarFontSize;
+        letter-spacing: var(--sidebar-letterSpacing);
+        font-size: var(--sidebar-font-size);
     }
 
-    a:hover {
-        color: $sidebarLinkColorClick;
-    }
+    
 
 
     .click {
-        background-color: $sidebarLinkColorHover;
-        color: $sidebarLinkColorClick;
+        background-color: var(--base-backgroundcolor-buttons);
+        color: var(--base-links-color);
         border-radius: 3px;
     }
     
@@ -73,7 +65,7 @@ $sidebarLinkColorHover: rgb(54, 45, 48);
 .activeBurgerMenu {
     transform: translate(0px, 0px);
     position: absolute;
-    top: 85px;
+    top: 70px;
     left: 10px;
     width: 170px;
     opacity: 1;
