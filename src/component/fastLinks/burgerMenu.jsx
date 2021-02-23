@@ -2,21 +2,24 @@ import React, { useEffect } from 'react';
 import './burgerMenu.scss';
 
 const BurgerMenu = (props) => {
-    useEffect(() => {
+    useEffect(( ) => {
         const burgerMenu = document.querySelector('.burgerMenu-container');
         const sidebar = document.querySelector('.container-sidebar');
         const content = document.querySelector('.content-main');
         const overlayDiv = document.createElement('div');
         overlayDiv.classList.add('overlay');
 
-        let removeListener = () => {
+        const removeListener = () => {
             window.removeEventListener('resize', () => { })
             window.removeEventListener('click', () => { })
         }
+        // burgerMenu.addEventListener('click', (e) => {
+        //     if(e.target === burgerMenu) {
 
+        //     }
+        // })
         window.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log(e.target)
             if (e.target === burgerMenu || e.target.parentNode === burgerMenu) {
                 burgerMenu.classList.toggle('burgerMenu-active');
                 if (burgerMenu.classList.contains('burgerMenu-active')) {
@@ -41,7 +44,7 @@ const BurgerMenu = (props) => {
             }
         })
         return removeListener();
-    })
+    }, [])
 
     return (
         <div className='burgerMenu-container'>

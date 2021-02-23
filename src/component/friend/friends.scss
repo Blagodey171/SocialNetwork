@@ -1,29 +1,31 @@
 $bgColorUserCardsContainer: rgb(245, 245, 245);
-$neitralColorGray: rgb(209, 209, 209);
+$neitralColor: rgb(255, 221, 159);
 .container-friends {
     width: 100%;
     border-radius: 5px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     background-color: var(--background-color-friend);
+    
     .container-user-card {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
 
-        max-width: 500px;
+        max-width: 1000px;
         min-width: 180px;
-        width: 40vw;
+        width: 100%;
         min-height: 800px;
 
         border-radius: 10px;
 
         .user-card {
-            width: 25vw;
-            min-width: 160px;
+            width: 40vw;
+            min-width: 270px;
             max-width: 400px;
 
             height: 100px;
@@ -33,8 +35,8 @@ $neitralColorGray: rgb(209, 209, 209);
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            border-bottom: solid 1px rgba(194, 194, 194, 0.815);
-            border-top: solid 1px rgba(194, 194, 194, 0.815);
+            border-bottom: solid 1px $neitralColor;
+            border-top: solid 1px $neitralColor;
 
             .user-card__avatar {
                 width: 10vw;
@@ -64,30 +66,32 @@ $neitralColorGray: rgb(209, 209, 209);
                     font-size: 12px;
                     background-color: none;
                     border-radius: 3px;
-                    border: solid 1px $neitralColorGray;
+                    // border: solid 1px $neitralColor;
                     background-color: var(--base-backgroundcolor-buttons);
                     transition: .3s;
                 }
                 .user-card__follow.follow:hover  {
-                    background-color: var(--background-color-buttonfollow-hover);
+                    background-color: var(--base-backgroundcolor-buttons-hover);
+                    box-shadow: 0 0 1px 0 inset black;
                 }
                 .user-card__follow.unfollow:hover {
-                    background-color: var(--background-color-buttonunfollow-hover);
+                    background-color: var(--base-backgroundcolor-buttons-hover);
+                    box-shadow: 0 0 1px 0 inset black;
                 }
             }
             .user-card__info{
                 width: 15vw;
-                min-width: 90px;
-                height: 40px;
-                border-left: solid 1px $neitralColorGray;
-                border-right: solid 1px $neitralColorGray;
+                min-width: 200px;
+                height: 60px;
+                border-left: solid 1px $neitralColor;
+                border-right: solid 1px $neitralColor;
 
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
                 .user-card__name{
-
+                    word-break: break-word;
                 }
                 .user-card__navigation{
 

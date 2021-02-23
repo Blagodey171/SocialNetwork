@@ -1,8 +1,4 @@
-    $networkFont : 'Bangers', cursive;
-    $networkSize : 30px;
-    $networkLetterSpacing : 4px;
-    $networkColor : rgb(246, 247, 239);
-    $bgColorHeader: rgb(42, 31, 35);
+
 
 .container-header {
     width: 100%;
@@ -17,14 +13,7 @@
         
         background-color: var(--base-backgroundcolor-header);
 
-        .logo {
-            h1 {
-                font-family: $networkFont;
-                letter-spacing: $networkLetterSpacing;
-                font-size: $networkSize;
-                color: $networkColor;
-            }
-        }
+        
     }
 
 }

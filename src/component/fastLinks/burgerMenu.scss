@@ -1,14 +1,14 @@
 .burgerMenu-container {
     min-width: 25px;
     height: 25px;
-    background-color: #362d30;
+    background-color: var(--bgcolor-burger-menu);
 
     margin: 0 10px 0 10px;
     display: none;
     border-radius: 5px;
     position: relative;
     .baseLine {
-        background-color: #e7e7fd;
+        background-color: rgb(255, 178, 83);
         width: 18px;
         height: 3px;
         border-radius: 2px;
@@ -20,7 +20,8 @@
         width: 18px;
         height: 3px;
         content: '';
-        background-color: #e7e7fd;
+        background-color: rgb(255, 178, 83);
+        width: 18px;
         transition: transform .2s;
         border-radius: 2px;
     }

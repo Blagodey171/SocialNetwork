@@ -2,84 +2,110 @@
     $navbarLinksSize : 20px;
     $navbarLinkLetterSpacing : 1px;
 
+    $networkFont : 'Bangers', cursive;
+    $networkSize : 20px;
+    $networkLetterSpacing : 4px;
+    $networkColor : rgb(255, 178, 115);
+    $bgColorHeader: rgb(42, 31, 35);
 .container-fast-links {
-    width: 100vw;
-    max-width: 100%;
-    height: 35px;
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    
+    width: 100%;
     background-color: var(--base-backgroundcolor-fastlinks);
-
-    opacity: .8;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    box-shadow: 0 0 4px 0 inset black;
+    box-shadow: 0 0 2px 0 inset black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .fast-links {
+        width: 100vw;
+        max-width: 1800px;
+        height: 45px;
     
-    .user-name-container{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        min-width: 120px;
-        height: 80%;
-        margin-right: 10px;
-        .user-name {
-            font-size: 15px;
-            font-weight: bold;
-            color: rgb(0, 0, 0);
-            letter-spacing: 1px;
-            cursor: default;
+        .logo {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            h1 {
+                font-family: $networkFont;
+                letter-spacing: $networkLetterSpacing;
+                font-size: $networkSize;
+                color: $networkColor;
+            }
         }
-
-        .logout-button {
-            min-width: 50px;
+        .user-name-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 120px;
+            height: 80%;
+            margin-right: 10px;
+            .user-name {
+                font-size: 15px;
+                font-weight: bold;
+                color: rgb(0, 0, 0);
+                letter-spacing: 1px;
+                cursor: default;
+            }
+    
+            .logout-button {
+                min-width: 50px;
+                height: 60%;
+                border-radius: 5px;
+                font-size: 12px;
+                background-color: var(--backgroundcolor-button-exit);
+                color: var(--base-links-color);
+                opacity: .9;
+                transition: .2s;
+                letter-spacing: 0.5px;
+                
+            }
+            .logout-button:hover {
+                background-color: var(--base-backgroundcolor-buttons-hover);
+                box-shadow: 0 0 1px 0 inset black;
+            }
+        }
+        .login-button {
+            margin-right: 10px;
+            min-width: 45px;
             height: 60%;
             border-radius: 5px;
             font-size: 12px;
             background-color: var(--backgroundcolor-button-exit);
-            color: var(--base-links-color);
             opacity: .9;
             transition: .2s;
             letter-spacing: 0.5px;
-            
+            .login-link {
+                width: 100vw;
+                height: 100%;
+                font-size: 12px;
+                color: var(--base-links-color);
+            }
         }
-        .logout-button:hover {
+        .login-button:hover .login-link{
             background-color: var(--base-backgroundcolor-buttons);
             color: black;
         }
-    }
-    .login-button {
-        margin-right: 10px;
-        min-width: 45px;
-        height: 60%;
-        border-radius: 5px;
-        font-size: 12px;
-        background-color: var(--backgroundcolor-button-exit);
-        opacity: .9;
-        transition: .2s;
-        letter-spacing: 0.5px;
-        .login-link {
-            width: 100vw;
-            height: 100%;
-            font-size: 12px;
-            color: var(--base-links-color);
+        .login-button:hover {
+            background-color: var(--base-backgroundcolor-buttons);
+            border: 1px black solid;
         }
+        
     }
-    .login-button:hover .login-link{
-        background-color: var(--base-backgroundcolor-buttons);
-        color: black;
-    }
-    .login-button:hover {
-        background-color: var(--base-backgroundcolor-buttons);
-        border: 1px black solid;
-    }
-    
 }
+
 @media (max-width: 500px) {
     .container-fast-links {
-        justify-content: space-between;
+        .fast-links {
+            .logo {
+                display: none;
+            }
+        }
+        
     }
 }

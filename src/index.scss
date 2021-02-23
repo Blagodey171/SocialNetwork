@@ -13,31 +13,33 @@ button {
   cursor: pointer;
 }
 :root {
-  // app-component
-  --base-backgroundcolor-app: rgb(231, 231, 253);
-  --base-backgroundcolor-two-column: rgb(255, 255, 255);
-  // header-component
-  --base-backgroundcolor-header: rgba(0, 172, 89, 0.534);
-  // fast-links-component
-  --base-backgroundcolor-fastlinks: rgb(241, 227, 215);
-  --backgroundcolor-button-exit: rgb(241, 227, 215);
-  // friend-component
-  --background-color-friend:  rgb(247, 247, 247);
-  --background-color-buttonfollow-hover: rgb(225, 226, 255);
-  --background-color-buttonunfollow-hover: rgb(225, 226, 255);
-  --corusel-boxshadow-color: rgb(255, 223, 183);
   // common
-  --base-backgroundcolor-buttons: rgb(196, 199, 255);
-  --base-links-color: rgb(25, 27, 73);
+  --base-backgroundcolor-buttons-hover: rgb(244, 244, 255);
+  --base-links-color: rgb(0, 0, 0);
+
+  // app-component
+  --base-backgroundcolor-app: rgb(231, 231, 255);
+  --base-backgroundcolor-two-column: rgb(255, 255, 255);
+  // fast-links-component
+  --base-backgroundcolor-fastlinks: rgb(255, 255, 255);
+  --backgroundcolor-button-exit: rgb(255, 255, 255);
+  // burgerMenu
+  --bgcolor-burger-menu: rgb(231, 231, 255);
+  // friend-component
+  --background-color-friend:  rgb(255, 255, 255);
   
+
+  // corusel-component
+  --corusel-boxshadow-color: rgb(194, 107, 2);
   // sidebar-component
+  --sidebar-backgroundcolor-buttons-hover: rgb(214, 218, 255);
   --sidebar-fontFamily: 'Ubuntu', sans-serif;
   --sidebar-letterSpacing: 1px;
   --sidebar-font-size: 12px;
   --sidebar-background-color: rgb(213, 215, 255);
 }
 body {
-  background-color: var(--base-backgroundcolor-app);
+  // background-color: var(--base-backgroundcolor-app);
   padding: 0;
   margin: 0;
   box-sizing: border-box;

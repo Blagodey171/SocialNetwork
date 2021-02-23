@@ -5,7 +5,7 @@ import { initializeThunkCreator } from '../../redux/appReducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
-import Header from '../header/header';
+import ControlPanel from '../friend/control-friends-panel/control-friends-panel';
 import ContainerFastLinks from '../fastLinks/classComponentFastLinks';
 import ContainerFriends from '../friend/containerFriends.jsx';
 import News from '../news/news';
@@ -33,13 +33,12 @@ class App extends React.Component {
         }
         return (
             <div className='container-app'>
-                <Header />
+                <ContainerFastLinks />
                 <div className='content'>
-                    <ContainerFastLinks />
-                    
                     <div className='container-two-column'>
                         <ContainerSidebar className='sidebar' />
                         <div className='content-main'>
+                            <Route exact path='/friend' render={() => <ControlPanel/>} />
                             <Route exact path='/friend' render={() => <ContainerFriends />} />
                             <Route path='/messages' render={() => <ContainerMessages />} />
                             <Route exact path='/news' render={() => <News />} />

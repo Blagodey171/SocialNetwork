@@ -1,6 +1,3 @@
-$sidebarFontSize : 12px;
-$sidebarLetterSpacing : 1px;
-
 .container-sidebar {
     max-width: 170px;
     min-height: 300px;
@@ -27,8 +24,7 @@ $sidebarLetterSpacing : 1px;
         margin-top: 6px;
     }
     .container-link:hover {
-        background-color: var(--base-backgroundcolor-buttons);
-        
+        background-color: var(--sidebar-backgroundcolor-buttons-hover);
         cursor: pointer;
     }
 
@@ -50,7 +46,7 @@ $sidebarLetterSpacing : 1px;
 
 
     .click {
-        background-color: var(--base-backgroundcolor-buttons);
+        background-color: var(--sidebar-backgroundcolor-buttons-hover);
         color: var(--base-links-color);
         border-radius: 3px;
     }
@@ -61,18 +57,18 @@ $sidebarLetterSpacing : 1px;
         transform: translate(-300px, -150px) skewX(35deg);
         width: 0px;
     }
+    .container-sidebar.activeBurgerMenu {
+        transform: translate(0px, 0px);
+        position: absolute;
+        top: 70px;
+        left: 10px;
+        width: 170px;
+        opacity: 1;
+        background-color: var(--base-backgroundcolor-app);
+        border-radius: 10px;
+        z-index: 1000;
+        transition: 1s;
+    }
 }
-.activeBurgerMenu {
-    transform: translate(0px, 0px);
-    position: absolute;
-    top: 70px;
-    left: 10px;
-    width: 170px;
-    opacity: 1;
-    background-color: #e7e7fd;
-    border-radius: 10px;
-    z-index: 1000;
-    transition: 1s;
 
-}
 
